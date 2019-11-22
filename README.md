@@ -1,3 +1,53 @@
+=== Step-by-step Setup ===
+
+<ol>
+<li>
+go to your codes directory
+</li>
+
+<li>
+`cd ..`
+</li>
+
+<li>
+`git clone https://github.com/dwihdyn/lifeskill-fe.git`
+</li>
+
+<li>
+put your codes accordingly to the boilerplate, make sure it works as usual, by running `npm start`
+</li>
+
+<li>
+branch out
+`git checkout -b whateverFeatureYouAreBuilding`
+</li>
+
+<li>
+once working, continue build your feature
+</li>
+
+<li>
+publish your codes into github
+
+<ul>
+  <li>`git add .`</li>
+  <li>`git commit -m 'my feature - yourName'`</li>
+  <li>`git push origin whateverFeatureYouAreBuilding`</li>
+</ul>
+</li>
+
+<li> (IMPORTANT !!!!!!!!!!!) :
+MAKE SURE you are in the right branch! Type
+`git branch`. 
+if it show "whateverFeatureYouAreBuilding" in green color, you on the right track
+</li>
+</ol>
+if you stuck, let <strong>dwi</strong> know on slack
+
+Remember to build one feature at a time! and good luck :)
+
+=================================================================================
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

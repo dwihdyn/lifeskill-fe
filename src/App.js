@@ -7,7 +7,6 @@ import LoginSignupPage from "./Pages/LoginSignupPage";
 import StudentProfile from "./Pages/StudentProfile";
 import MoreInfoCard from "./components/MoreInfoCard";
 
-
 class App extends React.Component {
   render() {
     return (
@@ -31,7 +30,12 @@ class App extends React.Component {
           exact
           path="/"
           component={() => {
-            return <MoreInfoCard />;
+            return localStorage.getItem("authToken") ? (
+              <StudentProfile />
+            ) : (
+              <LoginSignupPage />
+            );
+            // return <MoreInfoCard />;
           }}
         />
       </>

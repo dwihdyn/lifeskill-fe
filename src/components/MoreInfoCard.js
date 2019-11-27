@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Button, Card } from "react-bootstrap";
+import { Redirect } from "react-router-dom";
 
 class MoreInfoCard extends Component {
   state = {
@@ -14,7 +15,7 @@ class MoreInfoCard extends Component {
     });
     axios
       .post("http://localhost:5000/api/v1/calendar/club/favourite", {
-        favourited: this.state.isFavourite,
+        favourited: this.state.isFavourite
       })
       .then(function(response) {
         console.log(response);
@@ -25,10 +26,14 @@ class MoreInfoCard extends Component {
   };
 
   render() {
-    return this.props.clubs.forEach(club => {
-      console.log(club.name);
-      console.log(club.description);
-    });
+    // if (localStorage.getItem("authToken")) {
+    //   return <Redirect to="/profile" />;
+    // }
+    return true;
+    // return this.props.clubs.forEach(club => {
+    //   console.log(club.name);
+    //   console.log(club.description);
+    // });
     //   <Card style={{ width: "18rem" }}>
     //     <Card.Img variant="top" src="holder.js/100px180" />
     //     <Card.Body>

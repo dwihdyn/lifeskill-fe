@@ -15,8 +15,10 @@ class LoginSignupPage extends React.Component {
   render() {
     return (
       <>
+        {console.log(this.state.isLogin)}
         {this.state.isLogin ? (
           <>
+            {/* if login true, take to sign up page */}
             <h1>Sign Up Page</h1>
             <SignupForm signUpUser={this.props.signUpUser}></SignupForm>
             <Button color="primary" onClick={this.toggleLogin}>
@@ -25,6 +27,7 @@ class LoginSignupPage extends React.Component {
           </>
         ) : (
           <>
+            {/* if login false, take to sign up page */}
             <h1>Log In Page</h1>
             <LoginForm></LoginForm>
             <Button color="primary" onClick={this.toggleLogin}>

@@ -1,11 +1,12 @@
 import React from "react";
 import "./App.css";
-
-// import axios from 'axios';
+import "bootstrap/dist/css/bootstrap.min.css";
 import { Route } from "react-router-dom";
 
 import LoginSignupPage from "./Pages/LoginSignupPage";
 import StudentProfile from "./Pages/StudentProfile";
+import MoreInfoCard from "./components/MoreInfoCard";
+
 
 class App extends React.Component {
   render() {
@@ -13,7 +14,7 @@ class App extends React.Component {
       <>
         <Route
           exact
-          path="/"
+          path="/login"
           component={() => {
             return <LoginSignupPage />;
           }}
@@ -23,6 +24,14 @@ class App extends React.Component {
           path="/profile"
           component={() => {
             return <StudentProfile />;
+          }}
+        />
+
+        <Route
+          exact
+          path="/"
+          component={() => {
+            return <MoreInfoCard />;
           }}
         />
       </>

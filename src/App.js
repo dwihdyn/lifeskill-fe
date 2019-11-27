@@ -10,7 +10,7 @@ import MoreInfoCard from "./components/MoreInfoCard";
 class App extends React.Component {
   render() {
     return (
-      <>
+      <div className="App-header">
         <Route
           exact
           path="/login"
@@ -38,7 +38,7 @@ class App extends React.Component {
             // return <MoreInfoCard />;
           }}
         />
-      </>
+      </div>
     );
   }
 }

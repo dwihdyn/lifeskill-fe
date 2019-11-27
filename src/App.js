@@ -1,3 +1,7 @@
+// shun added his slider feature here, in his own branch
+
+
+
 import React from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";

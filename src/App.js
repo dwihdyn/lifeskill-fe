@@ -10,7 +10,7 @@ import HomePage from "./Pages/HomePage";
 class App extends React.Component {
   render() {
     return (
-      <>
+      <div className="App-header">
         <Route
           exact
           path="/login"
@@ -43,7 +43,7 @@ class App extends React.Component {
             );
           }}
         />
-      </>
+      </div>
     );
   }
 }

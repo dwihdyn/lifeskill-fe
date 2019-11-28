@@ -14,7 +14,7 @@ class MoreInfoCard extends Component {
     });
     axios
       .post("http://localhost:5000/api/v1/calendar/club/favourite", {
-        favourited: this.state.isFavourite,
+        favourited: this.state.isFavourite
       })
       .then(function(response) {
         console.log(response);
@@ -25,10 +25,14 @@ class MoreInfoCard extends Component {
   };
 
   render() {
-    return this.props.clubs.forEach(club => {
-      console.log(club.name);
-      console.log(club.description);
-    });
+    return console.log("message");
+    // <>
+    //   {this.props.clubs.forEach(club => {
+    //     console.log(club.name);
+    //     console.log(club.description);
+    //   })}
+    // </>
+
     //   <Card style={{ width: "18rem" }}>
     //     <Card.Img variant="top" src="holder.js/100px180" />
     //     <Card.Body>

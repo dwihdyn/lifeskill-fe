@@ -7,7 +7,7 @@ import LoginSignupPage from "./Pages/LoginSignupPage";
 import StudentProfile from "./Pages/StudentProfile";
 import HomePage from "./Pages/HomePage";
 import LandingPage from "./Pages/LandingPage";
-import NavBar from "../src/components/NavBar";
+import NavBar from "../src/Components/NavBar";
 
 class App extends React.Component {
   state = {

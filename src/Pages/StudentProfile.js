@@ -5,7 +5,7 @@ import { Container, Col, Row } from "react-bootstrap";
 import PointsWeekly from "../Containers/PointsWeekly";
 import PointsYearly from "../Containers/PointsYearly";
 import ClubProgress from "../Containers/ClubProgress";
-import PointsNavBar from "../components/PointsNavBar";
+import PointsNavBar from "../Components/PointsNavBar";
 
 class StudentProfile extends React.Component {
   state = {

@@ -5,7 +5,7 @@ import { Route } from "react-router-dom";
 
 import LoginSignupPage from "./Pages/LoginSignupPage";
 import StudentProfile from "./Pages/StudentProfile";
-import MoreInfoCard from "./components/MoreInfoCard";
+import HomePage from "./Pages/HomePage";
 
 class App extends React.Component {
   render() {
@@ -20,12 +20,18 @@ class App extends React.Component {
         />
         <Route
           exact
+          path="/homepage"
+          component={() => {
+            return <HomePage />;
+          }}
+        />
+        <Route
+          exact
           path="/profile"
           component={() => {
             return <StudentProfile />;
           }}
         />
-
         <Route
           exact
           path="/"
@@ -35,7 +41,6 @@ class App extends React.Component {
             ) : (
               <LoginSignupPage />
             );
-            // return <MoreInfoCard />;
           }}
         />
       </>

@@ -1,8 +1,8 @@
 import React from "react";
 import { Container, Form, FormGroup, Label, Input } from "reactstrap";
-import { Redirect } from "react-router-dom";
 
 import axios from "axios";
+import HomePage from "../Pages/HomePage";
 
 class LoginForm extends React.Component {
   state = {
@@ -57,13 +57,14 @@ class LoginForm extends React.Component {
   render() {
     let { id_number, password, redirect } = this.state;
 
-    // page redirect must be under render, since we are rendering to new page
+    // redirect user to homepage when user login | page redirect must be under render, since we are rendering to new page
     if (redirect) {
-      return <Redirect to="/profile" />;
+      return <HomePage />;
     }
 
     return (
       <Container className="App">
+        <h1>Log In Page</h1>
         <Form className="form">
           <FormGroup>
             <Label for="id_number">ID Number</Label>

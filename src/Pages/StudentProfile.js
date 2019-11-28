@@ -4,6 +4,7 @@ import { Button } from "reactstrap";
 import PointsWeekly from "../Containers/PointsWeekly";
 import PointsYearly from "../Containers/PointsYearly";
 import ClubProgress from "../Containers/ClubProgress";
+import LoginSignupPage from "./LoginSignupPage";
 
 // logout handler
 import { Redirect } from "react-router-dom";
@@ -30,8 +31,9 @@ class StudentProfile extends React.Component {
     let display;
 
     // direct user to login back when user logout
+    // change to history.push()
     if (redirect) {
-      return <Redirect to="/login" />;
+      return <LoginSignupPage />;
     }
 
     if (graph === "bar") {

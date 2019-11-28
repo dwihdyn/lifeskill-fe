@@ -63,8 +63,8 @@ const activities = [
 const clubs = [
   {
     id: 1,
-    image: "../assest/images/slide1.jpg",
-    imageBg: "../assest/images/slide1b.webp",
+    image: "./assets/images/slide1.jpg",
+    imageBg: "../assets/images/slide1b.webp",
     title: "The result",
     title1: "The result",
     title2: "The result",

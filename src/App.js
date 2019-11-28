@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Route } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
 
 import LoginSignupPage from "./Pages/LoginSignupPage";
 import StudentProfile from "./Pages/StudentProfile";
@@ -21,8 +21,8 @@ class App extends React.Component {
         <Route
           exact
           path="/homepage"
-          component={() => {
-            return <HomePage />;
+          component={props => {
+            return <HomePage {...props} />;
           }}
         />
         <Route
@@ -35,9 +35,9 @@ class App extends React.Component {
         <Route
           exact
           path="/"
-          component={() => {
+          component={props => {
             return localStorage.getItem("authToken") ? (
-              <StudentProfile />
+              <HomePage {...props} />
             ) : (
               <LoginSignupPage />
             );
@@ -48,4 +48,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withRouter(App);

@@ -1,37 +1,75 @@
-import React from 'react';
-import { Button } from 'reactstrap';
+import React from "react";
+import { Button } from "reactstrap";
+import { Container, Col, Row } from "react-bootstrap";
 
-import PointsWeekly from '../Containers/PointsWeekly'
-import PointsYearly from '../Containers/PointsYearly'
-import ClubProgress from '../Containers/ClubProgress'
+import PointsWeekly from "../Containers/PointsWeekly";
+import PointsYearly from "../Containers/PointsYearly";
+import ClubProgress from "../Containers/ClubProgress";
+import PointsNavBar from "../components/PointsNavBar";
 
 class StudentProfile extends React.Component {
-    state = {
-        graph: 'bar'
-    };
-    toggleView = e => {
-        this.setState({ graph: e.target.name });
-    };
-    render() {
-        const { graph } = this.state;
-        let display;
+  state = {
+    graph: "weekly"
+  };
+  toggleView = e => {
+    this.setState({ graph: e.target.name });
+  };
+  render() {
+    const { graph } = this.state;
+    let display_points;
 
-        if (graph === 'bar') {
-            display = <PointsWeekly></PointsWeekly>
-        } else if (graph === 'line') {
-            display = <PointsYearly></PointsYearly>
-        } else {
-            display = <ClubProgress></ClubProgress>
-        }
-        return (
-            <>
-                <Button name='bar' onClick={e => this.toggleView(e)}>Bar</Button>
-                <Button name='line' onClick={e => this.toggleView(e)}>Line</Button>
-                <Button name='progress' onClick={e => this.toggleView(e)}>Progress</Button>
-                {display}
-            </>
-        );
+    if (graph === "weekly") {
+      display_points = <PointsWeekly></PointsWeekly>;
+    } else {
+      display_points = <PointsYearly></PointsYearly>;
     }
+
+    return (
+      <>
+        <h1 class="dashboard-intro" style={{ margin: "80px" }}>
+          My Dashboard
+        </h1>
+        <Container>
+          <Row>
+            <Col
+              lg={3}
+              sm={12}
+              style={{ height: "vh", border: "1px solid black" }}
+            >
+              <h3>Student profile info here</h3>
+            </Col>
+            <Col
+              lg={9}
+              sm={12}
+              style={{ height: "vh", border: "1px solid black" }}
+            >
+              <Row
+                style={{
+                  height: "200px",
+                  border: "1px solid black",
+                  display: "block"
+                }}
+              >
+                <h3>My Points</h3>
+                {/* <PointsNavBar toggleView={this.toggleView}/>{" "} */}
+                <Button name="weekly" onClick={e => this.toggleView(e)}>
+                  Weekly
+                </Button>
+                <Button name="yearly" onClick={e => this.toggleView(e)}>
+                  Yearly
+                </Button>
+                {display_points}
+              </Row>
+              <Row style={{ height: "200px", border: "1px solid black" }}>
+                <h3>My Progress</h3>
+                {/* <ClubProgress></ClubProgress> */}
+              </Row>
+            </Col>
+          </Row>
+        </Container>
+      </>
+    );
+  }
 }
 
-export default StudentProfile
+export default StudentProfile;

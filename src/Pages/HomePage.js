@@ -17,7 +17,6 @@ class HomePage extends React.Component {
         this.setState({
           clubs: response.data
         });
-        console.log(this.state.clubs);
       })
       .catch(error => {
         console.log(error);
@@ -37,8 +36,8 @@ class HomePage extends React.Component {
   render() {
     return (
         <>
-        <h1>Homepage</h1>;
-        <MoreInfoCard clubs = {clubs}/>;
+          <h1>Homepage</h1>
+          <MoreInfoCard clubs={this.state.clubs}/>
         </>
     )
 

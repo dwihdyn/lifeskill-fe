@@ -1,5 +1,5 @@
 import React from 'react';
-import IconCross from './../Icons/IconCross';
+import IconCross from '../Icons/IconCross';
 import './Content.scss';
 
 const Content = ({ club, onClose }) => (

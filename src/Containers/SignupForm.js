@@ -10,6 +10,7 @@ class SignupForm extends React.Component {
     full_name: ``,
     password: ``,
     confirm_password: ``,
+    Tors: ``,
     redirect: false
   };
 
@@ -34,6 +35,12 @@ class SignupForm extends React.Component {
   handleConfPass = e => {
     this.setState({
       confirm_password: e.target.value
+    });
+  };
+
+  handleTeacherOrStudent = e => {
+    this.setState({
+      TorS: e.target.value
     });
   };
 
@@ -86,6 +93,7 @@ class SignupForm extends React.Component {
       full_name,
       password,
       confirm_password,
+      TorS,
       redirect
     } = this.state;
 
@@ -140,6 +148,19 @@ class SignupForm extends React.Component {
               onChange={this.handleConfPass}
             />
           </FormGroup>
+
+          <FormGroup>
+            <Label for="TorS">Teacher or Student ?</Label>
+            <Input
+              type="text"
+              name="TorS"
+              id="TorS"
+              placeholder="type 'T' or 'S'"
+              value={TorS}
+              onChange={this.handleTeacherOrStudent}
+            />
+          </FormGroup>
+
           <input
             type="submit"
             placeholder="Submit"

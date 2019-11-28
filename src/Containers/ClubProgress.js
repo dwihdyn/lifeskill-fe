@@ -4,8 +4,8 @@ import { VictoryAxis, VictoryBar, VictoryChart, VictoryTheme} from 'victory'
 class PointsWeekly extends React.Component {
     state = {
         data: [
-            {skill: 1, points: 80},
-            {skill: 2, points: 50},
+            {skill: 1, points: 100},
+            {skill: 2, points: 100},
             {skill: 3, points: 100}
         ]
     };

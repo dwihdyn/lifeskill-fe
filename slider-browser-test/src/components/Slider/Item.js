@@ -21,8 +21,7 @@ const Item = ({ item }) => (
             'item--open': isActive,
           })}
         >
-          <img src={item.image} alt="" />
-          <ShowDetailsButton onClick={() => onSelectSlide(item)} />
+<img src={item.image} alt="" style={{cursor: 'pointer'}} onClick={() => onSelectSlide(item)} />
           {isActive && <Mark />}
           {/* to add text */}
           {item.title}

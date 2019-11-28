@@ -3,6 +3,9 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Route } from "react-router-dom";
 
+
+// import Slider from './components/Slider'
+// import Dashboard from './Dashboard';
 import LoginSignupPage from "./Pages/LoginSignupPage";
 import StudentProfile from "./Pages/StudentProfile";
 import MoreInfoCard from "./components/MoreInfoCard";

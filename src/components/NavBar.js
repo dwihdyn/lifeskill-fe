@@ -17,7 +17,7 @@ const NavBar = props => {
             </>
           ) : (
             <>
-              <Nav.Link href={props.toggleLogin}>Log In</Nav.Link>
+              <Nav.Link onClick={props.toggleLogin}>Log In</Nav.Link>
               <Nav.Link onClick={props.toggleLogin}>Sign Up</Nav.Link>
             </>
           )}

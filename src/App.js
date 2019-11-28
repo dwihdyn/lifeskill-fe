@@ -16,6 +16,7 @@ class App extends React.Component {
     inLoginPage: true
   };
 
+  // change this to see whether token exist or not
   toggleLogin = () => {
     const { isLogin } = this.state;
     this.setState({ isLogin: !isLogin });

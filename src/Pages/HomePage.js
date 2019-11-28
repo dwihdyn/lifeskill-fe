@@ -1,7 +1,8 @@
 import React from "react";
 import axios from "axios";
 
-import MoreInfoCard from "../Containers/MoreInfoCard";
+import MoreInfoCard from "../components/MoreInfoCard";
+
 
 class HomePage extends React.Component {
   state = {
@@ -36,12 +37,11 @@ class HomePage extends React.Component {
 
   render() {
     return (
-        <>
+      <>
         <h1>Homepage</h1>;
-        <MoreInfoCard clubs = {clubs}/>;
-        </>
-    )
-
+        <MoreInfoCard />;
+      </>
+    );
   }
 }
 

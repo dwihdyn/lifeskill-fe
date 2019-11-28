@@ -5,7 +5,8 @@ import { Route } from "react-router-dom";
 
 import LoginSignupPage from "./Pages/LoginSignupPage";
 import StudentProfile from "./Pages/StudentProfile";
-import MoreInfoCard from "./components/MoreInfoCard";
+import HomePage from "./Pages/HomePage";
+import LandingPage from "./Pages/LandingPage";
 
 
 class App extends React.Component {
@@ -26,12 +27,18 @@ class App extends React.Component {
             return <StudentProfile />;
           }}
         />
-
+        <Route
+          exact
+          path="/homepage"
+          component={() => {
+            return <HomePage />;
+          }}
+        />
         <Route
           exact
           path="/"
           component={() => {
-            return <MoreInfoCard />;
+            return <LandingPage />;
           }}
         />
       </>

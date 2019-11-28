@@ -27,7 +27,7 @@ class LoginSignupPage extends React.Component {
           </>
         ) : (
           <>
-            {/* if login false, take to sign up page */}
+            {/* if login false, take to log in page */}
             <h1>Log In Page</h1>
             <LoginForm></LoginForm>
             <Button color="primary" onClick={this.toggleLogin}>

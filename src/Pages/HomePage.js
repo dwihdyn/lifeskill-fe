@@ -18,7 +18,6 @@ class HomePage extends React.Component {
         this.setState({
           clubs: response.data
         });
-        console.log(this.state.clubs);
       })
       .catch(error => {
         console.log(error);

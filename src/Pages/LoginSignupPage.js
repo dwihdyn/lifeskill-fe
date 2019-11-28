@@ -21,7 +21,7 @@ class LoginSignupPage extends React.Component {
             {/* if login true, take to sign up page */}
             <h1>Sign Up Page</h1>
             <SignupForm signUpUser={this.props.signUpUser}></SignupForm>
-            <Button color="primary" onClick={this.toggleLogin}>
+            <Button color="primary" onClick={this.props.toggleLogin}>
               Log in
             </Button>
           </>
@@ -30,7 +30,7 @@ class LoginSignupPage extends React.Component {
             {/* if login false, take to log in page */}
             <h1>Log In Page</h1>
             <LoginForm></LoginForm>
-            <Button color="primary" onClick={this.toggleLogin}>
+            <Button color="primary" onClick={this.props.toggleLogin}>
               Sign up
             </Button>
           </>

@@ -48,7 +48,10 @@ class SignupForm extends React.Component {
       })
       .then(res => {
         console.log(res);
-        if (res.data) {
+        if (res.data.success) {
+          // create token for persistent login
+          localStorage.setItem("authToken", res.data.auth_token);
+
           this.setState(
             {
               redirect: true

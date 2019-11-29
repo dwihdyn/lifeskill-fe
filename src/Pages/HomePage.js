@@ -37,9 +37,7 @@ class HomePage extends React.Component {
   render() {
     return (
       <>
-        <h1 class="homepage-intro" style={{ margin: "80px" }}>
-          2019 School Calendar
-        </h1>
+        <h1 style={{ margin: "80px" }}>2019 School Calendar</h1>
         <Container>
           <h3>Clubs</h3>
           <Row style={{ height: "200px", border: "1px solid black" }}></Row>

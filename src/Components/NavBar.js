@@ -5,9 +5,9 @@ const NavBar = props => {
   return (
     <>
       <Navbar bg="light" variant="light" className="fixed-top">
-        <Navbar.Brand href="#home">LifeSkills</Navbar.Brand>
+        <Navbar.Brand href="/">LifeSkills</Navbar.Brand>
         <Nav className="mr-auto">
-          {props.isLogin ? (
+          {localStorage.getItem("authToken") ? (
             <>
               <Nav.Link href="/homepage">School Calendar</Nav.Link>
               <Nav.Link href="#">Upload</Nav.Link>
@@ -17,8 +17,8 @@ const NavBar = props => {
             </>
           ) : (
             <>
-              <Nav.Link onClick={props.toggleLogin}>Log In</Nav.Link>
-              <Nav.Link onClick={props.toggleLogin}>Sign Up</Nav.Link>
+              <Nav.Link href="/login">Log In</Nav.Link>
+              <Nav.Link href="/signup">Sign Up</Nav.Link>
             </>
           )}
         </Nav>

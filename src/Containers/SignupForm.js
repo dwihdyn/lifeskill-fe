@@ -140,6 +140,35 @@ class SignupForm extends React.Component {
               onChange={this.handleConfPass}
             />
           </FormGroup>
+          <FormGroup>
+            <Label for="student_checkbox">
+              <Input
+                type="checkbox"
+                name="student_checkbox"
+                id="student_checkbox"
+                placeholder="********"
+                value={confirm_password}
+                onChange={this.handleConfPass}
+              />
+              Student
+            </Label>
+          </FormGroup>
+          <FormGroup>
+            <Label for="Teacher_checkbox">
+              <Input
+                type="checkbox"
+                name="Teacher_checkbox"
+                id="Teacher_checkbox"
+                placeholder="********"
+                value={confirm_password}
+                onChange={this.handleConfPass}
+              />
+              Teacher
+            </Label>
+          </FormGroup>
+
+
+          <br />
           <input
             type="submit"
             placeholder="Submit"

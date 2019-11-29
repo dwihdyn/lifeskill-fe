@@ -1,14 +1,12 @@
 import React from "react";
 import { Container, Form, FormGroup, Label, Input } from "reactstrap";
-import { Redirect } from "react-router-dom";
 
 import axios from "axios";
 
 class LoginForm extends React.Component {
   state = {
     id_number: ``,
-    password: ``,
-    redirect: false
+    password: ``
   };
 
   handleIdNumber = e => {
@@ -38,9 +36,7 @@ class LoginForm extends React.Component {
           // create token for persistent login
           localStorage.setItem("authToken", res.data.auth_token);
 
-          this.setState({
-            redirect: true
-          });
+          return (window.location = "/homepage");
         } else {
           alert("User does not exist, check the id or password");
           this.setState({
@@ -55,15 +51,11 @@ class LoginForm extends React.Component {
   };
 
   render() {
-    let { id_number, password, redirect } = this.state;
-
-    // page redirect must be under render, since we are rendering to new page
-    if (redirect) {
-      return <Redirect to="/profile" />;
-    }
+    let { id_number, password } = this.state;
 
     return (
       <Container className="App">
+        <h1 style={{ margin: "80px" }}>Log In</h1>
         <Form className="form">
           <FormGroup>
             <Label for="id_number">ID Number</Label>

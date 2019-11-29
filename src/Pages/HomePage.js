@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios";
-
-import MoreInfoCard from "../Containers/MoreInfoCard";
+import { Container, Row } from "react-bootstrap";
 
 class HomePage extends React.Component {
   state = {
@@ -35,12 +34,18 @@ class HomePage extends React.Component {
 
   render() {
     return (
-        <>
-          <h1>Homepage</h1>
-          <MoreInfoCard clubs={this.state.clubs}/>
-        </>
-    )
+      <>
+        <h1 style={{ margin: "80px" }}>2019 School Calendar</h1>
+        <Container>
+          <h3>Clubs</h3>
+          <Row style={{ height: "200px", border: "1px solid black" }}></Row>
+          <h3>Activities</h3>
+          <Row style={{ height: "200px", border: "1px solid black" }}></Row>
+        </Container>
 
+        {/* <MoreInfoCard />; */}
+      </>
+    );
   }
 }
 

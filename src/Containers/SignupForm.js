@@ -1,7 +1,6 @@
 import React from "react";
 import { Container, Form, FormGroup, Label, Input } from "reactstrap";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
 import "../App.css";
 
 class SignupForm extends React.Component {
@@ -52,19 +51,8 @@ class SignupForm extends React.Component {
           // create token for persistent login
           localStorage.setItem("authToken", res.data.auth_token);
 
-          this.setState(
-            {
-              redirect: true
-            },
-            // when state has been sent to backend & cleared, pop up success after 0.5 seconds
-            () => {
-              setTimeout(() => {
-                alert(
-                  "Student has been successfully enrolled!, redirect you to profile page"
-                );
-              }, 500);
-            }
-          );
+          alert("Student successfuly enrolled!");
+          return (window.location = "/homepage");
         } else {
           alert("Given student_id already exist! please change the student_id");
           this.setState({
@@ -81,20 +69,11 @@ class SignupForm extends React.Component {
   };
 
   render() {
-    let {
-      id_number,
-      full_name,
-      password,
-      confirm_password,
-      redirect
-    } = this.state;
-
-    if (redirect) {
-      return <Redirect to="/profile" />;
-    }
+    let { id_number, full_name, password, confirm_password } = this.state;
 
     return (
       <Container className="App">
+        <h1 style={{ margin: "80px" }}>Sign Up</h1>
         <Form className="form">
           <FormGroup>
             <Label for="id_number">ID Number</Label>

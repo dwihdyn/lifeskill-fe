@@ -1,48 +1,65 @@
 import React from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
-import LoginSignupPage from "./Pages/LoginSignupPage";
 import StudentProfile from "./Pages/StudentProfile";
 import HomePage from "./Pages/HomePage";
+import LandingPage from "./Pages/LandingPage";
+import NavBar from "../src/Components/NavBar";
+import LoginForm from "./Containers/LoginForm";
+import SignupForm from "./Containers/SignupForm";
 
 class App extends React.Component {
+  handleLogout = () => {
+    localStorage.removeItem("authToken");
+    return (window.location = "/");
+  };
+
   render() {
     return (
       <>
-        <Route
-          exact
-          path="/login"
-          component={() => {
-            return <LoginSignupPage />;
-          }}
-        />
-        <Route
-          exact
-          path="/homepage"
-          component={() => {
-            return <HomePage />;
-          }}
-        />
-        <Route
-          exact
-          path="/profile"
-          component={() => {
-            return <StudentProfile />;
-          }}
-        />
-        <Route
-          exact
-          path="/"
-          component={() => {
-            return localStorage.getItem("authToken") ? (
-              <StudentProfile />
-            ) : (
-              <LoginSignupPage />
-            );
-          }}
-        />
+        <NavBar handleLogout={this.handleLogout} />
+        <Switch>
+          <Route
+            exact
+            path="/"
+            component={() => {
+              return <LandingPage />;
+            }}
+          />
+
+          <Route
+            exact
+            path="/login"
+            component={() => {
+              return <LoginForm />;
+            }}
+          />
+
+          <Route
+            exact
+            path="/signup"
+            component={() => {
+              return <SignupForm />;
+            }}
+          />
+
+          <Route
+            exact
+            path="/homepage"
+            component={() => {
+              return <HomePage />;
+            }}
+          />
+          <Route
+            exact
+            path="/profile"
+            component={() => {
+              return <StudentProfile />;
+            }}
+          />
+        </Switch>
       </>
     );
   }

@@ -1,62 +1,68 @@
 import React from "react";
 import { Button } from "reactstrap";
+import { Container, Col, Row } from "react-bootstrap";
 
 import PointsWeekly from "../Containers/PointsWeekly";
 import PointsYearly from "../Containers/PointsYearly";
-import ClubProgress from "../Containers/ClubProgress";
-
-// logout handler
-import { Redirect } from "react-router-dom";
 
 class StudentProfile extends React.Component {
   state = {
-    graph: "bar",
-    redirect: false
+    graph: "weekly"
   };
-
   toggleView = e => {
     this.setState({ graph: e.target.name });
   };
-
-  handleLogout = () => {
-    this.setState({
-      redirect: true
-    });
-    localStorage.removeItem("authToken");
-  };
-
   render() {
-    const { graph, redirect } = this.state;
-    let display;
+    const { graph } = this.state;
+    let display_points;
 
-    // direct user to login back when user logout
-    if (redirect) {
-      return <Redirect to="/login" />;
-    }
-
-    if (graph === "bar") {
-      display = <PointsWeekly></PointsWeekly>;
-    } else if (graph === "line") {
-      display = <PointsYearly></PointsYearly>;
+    if (graph === "weekly") {
+      display_points = <PointsWeekly></PointsWeekly>;
     } else {
-      display = <ClubProgress></ClubProgress>;
+      display_points = <PointsYearly></PointsYearly>;
     }
+
     return (
       <>
-        <Button name="bar" onClick={e => this.toggleView(e)}>
-          Bar
-        </Button>
-        <Button name="line" onClick={e => this.toggleView(e)}>
-          Line
-        </Button>
-        <Button name="progress" onClick={e => this.toggleView(e)}>
-          Progress
-        </Button>
-        {/* handle logout */}
-        <Button name="Logout" onClick={this.handleLogout}>
-          Logout
-        </Button>
-        {display}
+        <h1 style={{ margin: "80px" }}>My Dashboard</h1>
+        <Container>
+          <Row>
+            <Col
+              lg={3}
+              sm={12}
+              style={{ height: "vh", border: "1px solid black" }}
+            >
+              <h3>Student profile info here</h3>
+            </Col>
+            <Col
+              lg={9}
+              sm={12}
+              style={{ height: "vh", border: "1px solid black" }}
+            >
+              <Row
+                style={{
+                  height: "200px",
+                  border: "1px solid black",
+                  display: "block"
+                }}
+              >
+                <h3>My Points</h3>
+                {/* <PointsNavBar toggleView={this.toggleView}/>{" "} */}
+                <Button name="weekly" onClick={e => this.toggleView(e)}>
+                  Weekly
+                </Button>
+                <Button name="yearly" onClick={e => this.toggleView(e)}>
+                  Yearly
+                </Button>
+                {display_points}
+              </Row>
+              <Row style={{ height: "200px", border: "1px solid black" }}>
+                <h3>My Progress</h3>
+                {/* <ClubProgress></ClubProgress> */}
+              </Row>
+            </Col>
+          </Row>
+        </Container>
       </>
     );
   }

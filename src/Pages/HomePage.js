@@ -2,8 +2,6 @@ import React from "react";
 import axios from "axios";
 import { Container, Row } from "react-bootstrap";
 
-// import MoreInfoCard from "../components/MoreInfoCard";
-
 class HomePage extends React.Component {
   state = {
     clubs: [],

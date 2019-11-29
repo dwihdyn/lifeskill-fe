@@ -24,9 +24,7 @@ class StudentProfile extends React.Component {
 
     return (
       <>
-        <h1 class="dashboard-intro" style={{ margin: "80px" }}>
-          My Dashboard
-        </h1>
+        <h1 style={{ margin: "80px" }}>My Dashboard</h1>
         <Container>
           <Row>
             <Col

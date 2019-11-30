@@ -1,6 +1,13 @@
 import React from "react";
 import { Button } from "reactstrap";
-import { Container, Col, Row } from "react-bootstrap";
+import {
+  Container,
+  Col,
+  Row,
+  Card,
+  ListGroup,
+  ListGroupItem
+} from "react-bootstrap";
 
 import PointsWeekly from "../Containers/PointsWeekly";
 import PointsYearly from "../Containers/PointsYearly";
@@ -24,22 +31,45 @@ class StudentProfile extends React.Component {
 
     return (
       <>
-        <h1 style={{ margin: "80px" }}>My Dashboard</h1>
-        <Container>
+        <Container className="Dashboard">
+          <h1 style={{ paddingTop: 100, paddingBottom: 30 }}>My Dashboard</h1>
           <Row>
             <Col
+              className="Dashboard-profile"
               lg={3}
               sm={12}
               style={{ height: "vh", border: "1px solid black" }}
             >
-              <h3>Student profile info here</h3>
+              <Card style={{ width: "16rem" }}>
+                <Card.Img
+                  variant="top"
+                  src="./assets/profile_jw_small.jpg"
+                  roundedCircle
+                />
+                <Card.Body>
+                  <Card.Title>Jules W.</Card.Title>
+                  <Card.Text>Year 11</Card.Text>
+                </Card.Body>
+                <ListGroup className="list-group-flush">
+                  <ListGroupItem>Netball Team</ListGroupItem>
+                  <ListGroupItem>
+                    Most Improved Last Week: Leadership
+                  </ListGroupItem>
+                </ListGroup>
+                <Card.Body>
+                  <Card.Link href="#">Missions</Card.Link>
+                  <Card.Link href="#">Suspend</Card.Link>
+                </Card.Body>
+              </Card>
             </Col>
             <Col
+              className="Dashboard-charts"
               lg={9}
               sm={12}
               style={{ height: "vh", border: "1px solid black" }}
             >
               <Row
+                className="Dashboard-points"
                 style={{
                   height: "200px",
                   border: "1px solid black",
@@ -56,7 +86,10 @@ class StudentProfile extends React.Component {
                 </Button>
                 {display_points}
               </Row>
-              <Row style={{ height: "200px", border: "1px solid black" }}>
+              <Row
+                className="Dashboard-progress"
+                style={{ height: "200px", border: "1px solid black" }}
+              >
                 <h3>My Progress</h3>
                 {/* <ClubProgress></ClubProgress> */}
               </Row>

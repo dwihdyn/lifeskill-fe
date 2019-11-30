@@ -1,5 +1,6 @@
 import React from "react";
-import { Container, Form, FormGroup, Label, Input } from "reactstrap";
+import "../App.css";
+import { Container, Col, Form, FormGroup, Label, Input } from "reactstrap";
 
 import axios from "axios";
 
@@ -54,9 +55,10 @@ class LoginForm extends React.Component {
     let { id_number, password } = this.state;
 
     return (
-      <Container className="App">
-        <h1 style={{ margin: "80px" }}>Log In</h1>
-        <Form className="form">
+      <Container className="Login">
+        <Col className="Login-header ">
+        <h1 style={{paddingTop: 100, paddingBottom: 30}}>Log In</h1>
+        <Form className="Login-form">
           <FormGroup>
             <Label for="id_number">ID Number</Label>
             <Input
@@ -84,6 +86,7 @@ class LoginForm extends React.Component {
             onClick={this.handleLoginButton}
           />
         </Form>
+        </Col>
       </Container>
     );
   }

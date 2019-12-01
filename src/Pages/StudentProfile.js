@@ -33,9 +33,10 @@ class StudentProfile extends React.Component {
   };
 
   componentDidMount() {
-    let { id_number, full_name, accumulated_score } = this.state;
     axios
-      .get("http://localhost:5000/api/v1/students/users/me")
+      .post("http://localhost:5000/api/v1/students/users/me", {
+        id_number: localStorage.getItem("id_number")
+      })
       .then(res => {
         console.log(res.data.accumulated_score);
         this.setState({

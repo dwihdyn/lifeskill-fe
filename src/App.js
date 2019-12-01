@@ -12,6 +12,7 @@ import SignupForm from "./Containers/SignupForm";
 class App extends React.Component {
   handleLogout = () => {
     localStorage.removeItem("authToken");
+    localStorage.removeItem("id_number");
     return (window.location = "/");
   };
 

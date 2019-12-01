@@ -1,5 +1,4 @@
 import React from "react";
-import "../App.css";
 import { Container, Col, Form, FormGroup, Label, Input } from "reactstrap";
 
 import axios from "axios";
@@ -56,36 +55,36 @@ class LoginForm extends React.Component {
 
     return (
       <Container className="Login">
-        <Col className="Login-header ">
-        <h1 style={{paddingTop: 100, paddingBottom: 30}}>Log In</h1>
-        <Form className="Login-form">
-          <FormGroup>
-            <Label for="id_number">ID Number</Label>
-            <Input
-              type="text"
-              id="id_number"
-              placeholder="11 to see inside"
-              value={id_number}
-              onChange={this.handleIdNumber}
+        <Col lg={6} className="Login-header">
+          <h1 style={{ paddingTop: 100, paddingBottom: 30, }}>Log In</h1>
+          <Form className="Login-form">
+            <FormGroup>
+              <Label for="id_number">ID Number</Label>
+              <Input
+                type="text"
+                id="id_number"
+                placeholder="11 to see inside"
+                value={id_number}
+                onChange={this.handleIdNumber}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for="password">Password</Label>
+              <Input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="111"
+                value={password}
+                onChange={this.handlePassword}
+              />
+            </FormGroup>
+            <input
+              type="submit"
+              placeholder="Submit"
+              onClick={this.handleLoginButton}
             />
-          </FormGroup>
-          <FormGroup>
-            <Label for="password">Password</Label>
-            <Input
-              type="password"
-              name="password"
-              id="password"
-              placeholder="111"
-              value={password}
-              onChange={this.handlePassword}
-            />
-          </FormGroup>
-          <input
-            type="submit"
-            placeholder="Submit"
-            onClick={this.handleLoginButton}
-          />
-        </Form>
+          </Form>
         </Col>
       </Container>
     );

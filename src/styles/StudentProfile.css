@@ -1,0 +1,37 @@
+.Dashboard-container {
+    width: 110vw;
+    height: 110vh;
+    margin-top: 62.5px;
+}
+
+.Dashboard-row {
+    height: 110vh;
+}
+
+.Dashboard-sidebar {
+    background-color: #362ca9;
+}
+
+.Dashboard-charts {
+    background-color: whitesmoke;
+}
+
+.Dashboard-charts-header {
+    padding-top: 15px;
+    border-bottom: 1px solid #FA8D19;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.Dashboard-points {
+    margin: 15px 15px 0 15px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.Dashboard-progress {
+    margin: 15px 15px 0 15px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}

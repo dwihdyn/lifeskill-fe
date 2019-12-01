@@ -73,8 +73,8 @@ class SignupForm extends React.Component {
 
     return (
       <Container className="Signup">
-        <Col className="Signup-header">
-          <h1 style={{ paddingTop: 100, paddingBottom: 30 }}>Sign Up</h1>
+        <Col lg={6} className="Signup-header">
+          <h1 style={{ paddingTop: 100, paddingBottom: 30, }}>Sign Up</h1>
           <Form className="form">
             <FormGroup>
               <Label for="id_number">ID Number</Label>

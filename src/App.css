@@ -1,14 +1,19 @@
-.Landing-header {
-  display: inline-block;
-  vertical-align: middle;
+.Landing {
+  background-color: #362ca9;
 }
 
-.Landing-intro {
+.Landing-header {
   min-height: 110vh;
-  background-color: #362ca9;
+  display: inline-block;
+  position: relative
+}
+
+.Landing-intro { 
   padding: 100px;
+  width: 50vw;
   font-size: 60px;
   color: whitesmoke;
+  align-items: center;
 }
 
 .Landing-special {

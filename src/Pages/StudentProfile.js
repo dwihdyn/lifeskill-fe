@@ -38,7 +38,6 @@ class StudentProfile extends React.Component {
     return (
       <>
         <Container className="Dashboard-container">
-          {/* <h1 style={{ paddingTop: 100, paddingBottom: 30 }}>My Dashboard</h1> */}
           <Row className="Dashboard-row">
             <Col className="Dashboard-sidebar" lg={2} sm={12}>
               <Image
@@ -79,7 +78,7 @@ class StudentProfile extends React.Component {
                   <div className="Wrapper">
                     <div className="Wrapper-header">
                       {" "}
-                      <h4 className="Dashboard-points-header">My Points</h4>
+                      <h3 className="Dashboard-points-header">My Points</h3>
 
                       <p>Monday, 2/12/2019 - Sunday, 8/12/2019</p>
                     </div>
@@ -110,7 +109,7 @@ class StudentProfile extends React.Component {
               <Row>
                 <Col className="Dashboard-progress">
                   {" "}
-                  <h4>My Progress</h4>
+                  <h3 className="Dashboard-progress-header">My Progress</h3>
                   <ClubProgress></ClubProgress>
                 </Col>
               </Row>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Form, FormGroup, Label, Input } from "reactstrap";
+import { Container, Col, Form, FormGroup, Label, Input } from "reactstrap";
 import axios from "axios";
 import "../App.css";
 
@@ -72,59 +72,61 @@ class SignupForm extends React.Component {
     let { id_number, full_name, password, confirm_password } = this.state;
 
     return (
-      <Container className="App">
-        <h1 style={{ margin: "80px" }}>Sign Up</h1>
-        <Form className="form">
-          <FormGroup>
-            <Label for="id_number">ID Number</Label>
-            <Input
-              type="text"
-              name="id_number"
-              id="id_number"
-              placeholder="Integer number only"
-              value={id_number}
-              onChange={this.handleId}
+      <Container className="Signup">
+        <Col lg={6} className="Signup-header">
+          <h1 style={{ paddingTop: 100, paddingBottom: 30, }}>Sign Up</h1>
+          <Form className="form">
+            <FormGroup>
+              <Label for="id_number">ID Number</Label>
+              <Input
+                type="text"
+                name="id_number"
+                id="id_number"
+                placeholder="Integer number only"
+                value={id_number}
+                onChange={this.handleId}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for="full_name">Full Name</Label>
+              <Input
+                type="text"
+                name="full_name"
+                id="full_name"
+                placeholder="John Lewis"
+                value={full_name}
+                onChange={this.handleFullname}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for="password">Password</Label>
+              <Input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="********"
+                value={password}
+                onChange={this.handlePass}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for="confirm_password">Confirm Password</Label>
+              <Input
+                type="password"
+                name="confirm_password"
+                id="confirm_password"
+                placeholder="********"
+                value={confirm_password}
+                onChange={this.handleConfPass}
+              />
+            </FormGroup>
+            <input
+              type="submit"
+              placeholder="Submit"
+              onClick={this.handleSubmitButton}
             />
-          </FormGroup>
-          <FormGroup>
-            <Label for="full_name">Full Name</Label>
-            <Input
-              type="text"
-              name="full_name"
-              id="full_name"
-              placeholder="John Lewis"
-              value={full_name}
-              onChange={this.handleFullname}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label for="password">Password</Label>
-            <Input
-              type="password"
-              name="password"
-              id="password"
-              placeholder="********"
-              value={password}
-              onChange={this.handlePass}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label for="confirm_password">Confirm Password</Label>
-            <Input
-              type="password"
-              name="confirm_password"
-              id="confirm_password"
-              placeholder="********"
-              value={confirm_password}
-              onChange={this.handleConfPass}
-            />
-          </FormGroup>
-          <input
-            type="submit"
-            placeholder="Submit"
-            onClick={this.handleSubmitButton}
-          />
-        </Form>
+          </Form>
+        </Col>
       </Container>
     );
   }

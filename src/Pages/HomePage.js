@@ -43,9 +43,9 @@ class HomePage extends React.Component {
           <h3>Activities</h3>
           <Row style={{ height: "200px", border: "1px solid black" }}></Row>
         </Container>
-
         {/* <MoreInfoCard />; */}
       </>
+
     );
   }
 }

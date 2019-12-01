@@ -6,7 +6,7 @@ import { Route, Switch } from "react-router-dom";
 import StudentProfile from "./Pages/StudentProfile";
 import HomePage from "./Pages/HomePage";
 import LandingPage from "./Pages/LandingPage";
-import NavBar from "../src/Components/NavBar";
+import NavBar from "./Components/NavBar";
 import LoginForm from "./Containers/LoginForm";
 import SignupForm from "./Containers/SignupForm";
 

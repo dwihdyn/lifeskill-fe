@@ -1,5 +1,6 @@
+// import React from "./node_modules/react";
 import React from "react";
-import { Navbar, Nav } from "react-bootstrap";
+import { Navbar, Nav } from "./node_modules/react-bootstrap";
 
 const NavBar = props => {
   return (

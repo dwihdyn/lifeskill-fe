@@ -1,13 +1,13 @@
-import React from "./node_modules/react";
 import React from "react";
-import { Navbar, Nav } from "./node_modules/react-bootstrap";
-
+import { Navbar, Nav } from "react-bootstrap";
 
 const NavBar = props => {
   return (
     <>
       <Navbar bg="light" variant="light" className="fixed-top">
-        <Navbar.Brand href="/" style={{fontSize: "1.5em", color: "#FA8D19"}}>LifeSkills</Navbar.Brand>
+        <Navbar.Brand href="/" style={{ fontSize: "1.5em", color: "#FA8D19" }}>
+          LifeSkills
+        </Navbar.Brand>
         <Nav className="mr-auto">
           {localStorage.getItem("authToken") ? (
             <>

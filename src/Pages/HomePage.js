@@ -33,6 +33,7 @@ class HomePage extends React.Component {
   }
 
   render() {
+    let { clubs, activities } = this.state;
     return (
       <>
         <h1 style={{ margin: "80px" }}>2019 School Calendar</h1>

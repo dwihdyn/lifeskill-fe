@@ -12,8 +12,9 @@ import {
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../styles/StudentProfile.css";
-import profileImg from "../assets/profile_jw_small.png";
+import axios from "axios";
 
+import profileImg from "../assets/profile_jw_small.png";
 import PointsWeekly from "../Containers/PointsWeekly";
 import PointsYearly from "../Containers/PointsYearly";
 import PointsChartKick from "../Containers/PointsChartKick";
@@ -26,7 +27,9 @@ class StudentProfile extends React.Component {
     graph: "weekly",
     id_number: ``,
     full_name: ``,
-    accumulated_score: ``
+    accumulated_score: ``,
+    favourites: [],
+    favActs: []
   };
 
   toggleView = e => {
@@ -57,9 +60,36 @@ class StudentProfile extends React.Component {
         }
       })
       .catch(err => {
-        console.log(err);
+        console.log(err);});
+
+     axios   
+      .get("http://localhost:5000/api/v1/calendar/club")
+      .then(response => {
+        let newFave = response.data.filter(favourite => {
+          return favourite.fav;
+        });
+        this.setState({
+          favourites: newFave
+        });
+      })
+      .catch(error => {
+        console.log(error);
       });
-  }
+
+      axios
+      .get("http://localhost:5000/api/v1/calendar/activity")
+      .then(response => {
+        let newActs = response.data.filter(favourite => {
+          return favourite.fav;
+        });
+        this.setState({
+          favActs: newActs
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
 
   render() {
     const { graph, id_number, full_name, accumulated_score } = this.state;
@@ -79,6 +109,8 @@ class StudentProfile extends React.Component {
     } else if (graph === "chartkick") {
       display_points = <PointsChartKick />;
     }
+
+    const { favourite } = this.state.favourites.map(favourite => {});
 
     return (
       <>
@@ -110,7 +142,7 @@ class StudentProfile extends React.Component {
                 </Nav.Link>
                 <Nav.Link eventKey="link-4" className="Sidebar-link">
                   Suspend
-                </Nav.Link> 
+                </Nav.Link>
               </Nav>
             </Col>
             <Col className="Dashboard-charts" lg={10} md={10} sm={12}>
@@ -159,9 +191,28 @@ class StudentProfile extends React.Component {
               <Row>
                 <Col className="Dashboard-progress">
                   {" "}
-                  <h3 className="Dashboard-progress-header">My Progress</h3>
-                  <ClubProgress></ClubProgress>
-                  {/* <MyProgress /> */}
+                  <h3 className="Dashboard-progress-header">
+                    My Progress Towards:
+                  </h3>
+                  {/* <ClubProgress></ClubProgress> */}
+                  {/* render progress for clubs */}
+                  {this.state.favourites.map(favourite => {
+                    return (
+                      <MyProgress
+                        key={favourite.id}
+                        favClubs={this.state.favourites}
+                      />
+                    );
+                  })}
+                  {/* render progress for activities */}
+                  {this.state.favourites.map(favourite => {
+                    return (
+                      <MyProgress
+                        key={favourite.id}
+                        favActs={this.state.favActs}
+                      />
+                    );
+                  })}
                 </Col>
               </Row>
             </Col>

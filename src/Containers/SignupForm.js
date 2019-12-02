@@ -43,8 +43,6 @@ class SignupForm extends React.Component {
     });
   };
 
-
-
   handleSubmitButton = e => {
     e.preventDefault();
     axios
@@ -63,7 +61,7 @@ class SignupForm extends React.Component {
           if (this.state.user_group == "Student") {
             alert("Student successfuly enrolled!");
           } else {
-            alert("Teacher successfully enrolled!")
+            alert("Teacher successfully enrolled!");
           }
           return (window.location = "/homepage");
         } else {
@@ -83,12 +81,18 @@ class SignupForm extends React.Component {
   };
 
   render() {
-    let { id_number, full_name, password, confirm_password, user_group } = this.state;
+    let {
+      id_number,
+      full_name,
+      password,
+      confirm_password,
+      user_group
+    } = this.state;
 
     return (
       <Container className="Signup">
         <Col lg={6} className="Signup-header">
-          <h1 style={{ paddingTop: 100, paddingBottom: 30, }}>Sign Up</h1>
+          <h1 style={{ paddingTop: 100, paddingBottom: 30 }}>Sign Up</h1>
           <Form className="form">
             <FormGroup>
               <Label for="id_number">ID Number</Label>
@@ -150,7 +154,6 @@ class SignupForm extends React.Component {
               </Input>
             </FormGroup>
 
-
             <br />
             <input
               type="submit"
@@ -159,7 +162,7 @@ class SignupForm extends React.Component {
             />
           </Form>
         </Col>
-      </Container >
+      </Container>
     );
   }
 }

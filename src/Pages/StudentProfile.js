@@ -7,17 +7,19 @@ import {
   Image,
   Card,
   ListGroup,
-  ListGroupItem,
-  Nav
+  Nav,
+  ProgressBar
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../styles/StudentProfile.css";
-import profileImg from "../assets/profile_jw_small.png";
+import axios from "axios";
 
+import profileImg from "../assets/profile_jw_small.png";
 import PointsWeekly from "../Containers/PointsWeekly";
 import PointsYearly from "../Containers/PointsYearly";
 import PointsChartKick from "../Containers/PointsChartKick";
 import ClubProgress from "../Containers/ClubProgress";
+import MyProgress from "../Containers/MyProgress";
 import axios from "axios";
 
 class StudentProfile extends React.Component {
@@ -25,7 +27,9 @@ class StudentProfile extends React.Component {
     graph: "weekly",
     id_number: ``,
     full_name: ``,
-    accumulated_score: ``
+    accumulated_score: ``,
+    favourites: [],
+    favActs: []
   };
 
   toggleView = e => {
@@ -56,9 +60,37 @@ class StudentProfile extends React.Component {
         }
       })
       .catch(err => {
-        console.log(err);
+        console.log(err);});
+
+     axios   
+      .get("http://localhost:5000/api/v1/calendar/club")
+      .then(response => {
+        let newFave = response.data.filter(favourite => {
+          return favourite.fav;
+        });
+        this.setState({
+          favourites: newFave
+        });
+        console.log(this.state.favourites);
+      })
+      .catch(error => {
+        console.log(error);
       });
-  }
+
+    axios
+      .get("http://localhost:5000/api/v1/calendar/activity")
+      .then(response => {
+        let newActs = response.data.filter(favourite => {
+          return favourite.fav;
+        });
+        this.setState({
+          favActs: newActs
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
 
   render() {
     const { graph, id_number, full_name, accumulated_score } = this.state;
@@ -79,11 +111,13 @@ class StudentProfile extends React.Component {
       display_points = <PointsChartKick />;
     }
 
+    console.log(this.state.favourites);
+    console.log(this.state.favActs);
     return (
       <>
         <Container className="Dashboard-container">
           <Row className="Dashboard-row">
-            <Col className="Dashboard-sidebar" lg={2} sm={12}>
+            <Col className="Dashboard-sidebar" lg={2} md={2} sm={12}>
               <Image
                 className="Dashboard-sidebar-img"
                 src={profileImg}
@@ -98,15 +132,21 @@ class StudentProfile extends React.Component {
               </div>
               {/* Nav to display Points or Progress component */}
               <Nav defaultActiveKey="/home" className="flex-column">
-                <Nav.Link eventKey="link-1" style={{ color: "#fa8d19" }}>
+                <Nav.Link eventKey="link-1" className="Sidebar-link">
                   My Points
                 </Nav.Link>
-                <Nav.Link eventKey="link-2" style={{ color: "#fa8d19" }}>
+                <Nav.Link eventKey="link-2" className="Sidebar-link">
                   My Progress
+                </Nav.Link>
+                <Nav.Link eventKey="link-3" className="Sidebar-link">
+                  Missions
+                </Nav.Link>
+                <Nav.Link eventKey="link-4" className="Sidebar-link">
+                  Suspend
                 </Nav.Link>
               </Nav>
             </Col>
-            <Col className="Dashboard-charts" lg={10} sm={12}>
+            <Col className="Dashboard-charts" lg={10} md={10} sm={12}>
               <div className="Dashboard-charts-header">
                 <p className="Dashboard-charts-header-li">
                   <strong>Hello, {full_name}. Welcome to your dashboard</strong>
@@ -152,8 +192,16 @@ class StudentProfile extends React.Component {
               <Row>
                 <Col className="Dashboard-progress">
                   {" "}
-                  <h3 className="Dashboard-progress-header">My Progress</h3>
-                  <ClubProgress></ClubProgress>
+                  <h3 className="Dashboard-progress-header">My Progress:</h3>
+                  {/* <ClubProgress></ClubProgress> */}
+                  {/* render progress for clubs */}
+                  {this.state.favourites.map(favourite => (
+                    <MyProgress key={favourite.id} fave={favourite} />
+                  ))}
+                  {/* render progress for activities */}
+                  {this.state.favActs.map(favAct => (
+                    <MyProgress key={favAct.id} fave={favAct} />
+                  ))}
                 </Col>
               </Row>
             </Col>

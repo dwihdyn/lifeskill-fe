@@ -24,6 +24,10 @@
   margin: 20px 0 0 16px;
 }
 
+.Sidebar-link {
+  color: #fa8d19;
+}
+
 .Dashboard-charts {
   background-color: whitesmoke;
 }
@@ -60,8 +64,14 @@
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 10px;
+  padding-bottom: 20px;
 }
 
 .Dashboard-progress-header {
     padding: 20px 0 0 10px;
+}
+
+.Progress {
+  display: flex;
+  flex-wrap: wrap;
 }

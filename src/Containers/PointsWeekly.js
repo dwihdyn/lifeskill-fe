@@ -6,7 +6,30 @@ class PointsWeekly extends React.Component {
   // state = {[]};
   render() {
     return (
-      <div style={{ height: "50%", width: "50%" }}>
+      <div style= {{ height: "40%", width: "40%"}}>
+        <VictoryChart
+          domainPadding={20}
+          theme={VictoryTheme.material}
+        >
+          <VictoryAxis
+            // tickValues specifies both the number of ticks and where
+            // they are placed on the axis
+            tickValues={[1, 2, 3]}
+            tickFormat={["Creativity", "Leadership", "Respect"]}
+          />
+          <VictoryAxis
+            dependentAxis
+            // tickFormat specifies how ticks should be displayed
+            tickFormat={x => `${x / 100}`}
+          />
+          <VictoryBar
+            data={this.state.data}
+            // data accessor for x values
+            x="skill"
+            // data accessor for y values
+            y="points"
+          />
+        </VictoryChart>
         <ColumnChart
           data={[
             ["Creativity", this.props.creativity_score],

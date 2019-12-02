@@ -5,7 +5,9 @@ const NavBar = props => {
   return (
     <>
       <Navbar bg="light" variant="light" className="fixed-top">
-        <Navbar.Brand href="/">LifeSkills</Navbar.Brand>
+        <Navbar.Brand href="/" style={{ fontSize: "1.5em", color: "#FA8D19" }}>
+          LifeSkills
+        </Navbar.Brand>
         <Nav className="mr-auto">
           {localStorage.getItem("authToken") ? (
             <>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Form, FormGroup, Label, Input } from "reactstrap";
+import { Container, Col, Form, FormGroup, Label, Input } from "reactstrap";
 
 import axios from "axios";
 
@@ -54,36 +54,38 @@ class LoginForm extends React.Component {
     let { id_number, password } = this.state;
 
     return (
-      <Container className="App">
-        <h1 style={{ margin: "80px" }}>Log In</h1>
-        <Form className="form">
-          <FormGroup>
-            <Label for="id_number">ID Number</Label>
-            <Input
-              type="text"
-              id="id_number"
-              placeholder="11 to see inside"
-              value={id_number}
-              onChange={this.handleIdNumber}
+      <Container className="Login">
+        <Col lg={6} className="Login-header">
+          <h1 style={{ paddingTop: 100, paddingBottom: 30, }}>Log In</h1>
+          <Form className="Login-form">
+            <FormGroup>
+              <Label for="id_number">ID Number</Label>
+              <Input
+                type="text"
+                id="id_number"
+                placeholder="11 to see inside"
+                value={id_number}
+                onChange={this.handleIdNumber}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for="password">Password</Label>
+              <Input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="111"
+                value={password}
+                onChange={this.handlePassword}
+              />
+            </FormGroup>
+            <input
+              type="submit"
+              placeholder="Submit"
+              onClick={this.handleLoginButton}
             />
-          </FormGroup>
-          <FormGroup>
-            <Label for="password">Password</Label>
-            <Input
-              type="password"
-              name="password"
-              id="password"
-              placeholder="111"
-              value={password}
-              onChange={this.handlePassword}
-            />
-          </FormGroup>
-          <input
-            type="submit"
-            placeholder="Submit"
-            onClick={this.handleLoginButton}
-          />
-        </Form>
+          </Form>
+        </Col>
       </Container>
     );
   }

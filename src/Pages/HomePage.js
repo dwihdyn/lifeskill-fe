@@ -33,6 +33,7 @@ class HomePage extends React.Component {
   }
 
   render() {
+    let { clubs, activities } = this.state;
     return (
       <>
         <h1 style={{ margin: "80px" }}>2019 School Calendar</h1>
@@ -42,9 +43,9 @@ class HomePage extends React.Component {
           <h3>Activities</h3>
           <Row style={{ height: "200px", border: "1px solid black" }}></Row>
         </Container>
-
         {/* <MoreInfoCard />; */}
       </>
+
     );
   }
 }

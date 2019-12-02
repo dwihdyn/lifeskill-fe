@@ -192,9 +192,7 @@ class StudentProfile extends React.Component {
               <Row>
                 <Col className="Dashboard-progress">
                   {" "}
-                  <h3 className="Dashboard-progress-header">
-                    My Progress Towards:
-                  </h3>
+                  <h3 className="Dashboard-progress-header">My Progress:</h3>
                   {/* <ClubProgress></ClubProgress> */}
                   {/* render progress for clubs */}
                   {this.state.favourites.map(favourite => (

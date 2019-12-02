@@ -2,7 +2,6 @@ import React from "react";
 import "../styles/ProgressCard.css";
 
 import { ProgressBar, Image, Button, Row, Col } from "react-bootstrap";
-import profileImg from "../assets/profile_jw_small.png";
 
 class MyProgress extends React.Component {
   // state = {
@@ -19,9 +18,11 @@ class MyProgress extends React.Component {
       <>
         <div className="Progress">
           <div className="Progress-wrapper">
-            <p>{name}</p>
-            <img src={image} />
-            <p>{points}</p>
+            <ProgressBar variant="info" animated now={60} />
+            {/* <img src={image} /> */}
+            <p className="Progress-name">{name}</p>
+            <h4>{points}</h4>
+            <Button variant="warning">Apply</Button>
           </div>
         </div>
       </>

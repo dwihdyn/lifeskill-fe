@@ -7,11 +7,11 @@ import ClubImage from './ClubImage'
 class ClubProgress extends React.Component {
     state = {
         data: [
-            {skill: 1, points: 80, label:""},
-            {skill: 2, points: 50, label: ""},
-            {skill: 3, points: 100, label: ""},
+            {skill: 1, points: 80, label:"ASAD"},
+            {skill: 2, points: 50, label:""},
+            {skill: 3, points: 100, label:""},
             {skill: 4, points: 80, label:"" },
-            // {skill: 5, points: 80, label:"" },
+            {skill: 5, points: 80, label:"" },
             // {skill: 6, points: 80, label:"" },
             // {skill: 7, points: 80, label:"" },
             // {skill: 8, points: 80, label:"" },
@@ -26,8 +26,8 @@ class ClubProgress extends React.Component {
                     <VictoryAxis
                         // tickValues specifies both the number of ticks and where
                         // they are placed on the axis
-                        tickValues={[1, 2, 3, 4]}
-                        tickFormat={["Music", "Debate", "Sports", "None"]}
+                        tickValues={[1, 2, 3, 4, 5]}
+                        tickFormat={["Music", "Debate", "Sports", "Art", "FFFF"]}
                     />
 
                     {/* <VictoryScatter

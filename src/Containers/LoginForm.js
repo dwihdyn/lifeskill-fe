@@ -38,6 +38,9 @@ class LoginForm extends React.Component {
 
           // save logged in user credential in local
           localStorage.setItem("id_number", res.data.id_number);
+          alert("logged in successfully. welcome back " + res.data.full_name)
+
+
 
           return (window.location = "/homepage");
         } else {

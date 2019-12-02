@@ -38,14 +38,22 @@ class StudentProfile extends React.Component {
         id_number: localStorage.getItem("id_number")
       })
       .then(res => {
-        this.setState({
-          id_number: res.data.id_number,
-          full_name: res.data.full_name,
-          creativity_score: res.data.creativity_score,
-          leadership_score: res.data.leadership_score,
-          respect_score: res.data.respect_score,
-          accumulated_score: res.data.accumulated_score
-        });
+        console.log(res.data)
+        if (res.data.isStudent) {
+          this.setState({
+            id_number: res.data.id_number,
+            full_name: res.data.full_name,
+            creativity_score: res.data.creativity_score,
+            leadership_score: res.data.leadership_score,
+            respect_score: res.data.respect_score,
+            accumulated_score: res.data.accumulated_score
+          });
+        } else {
+          this.setState({
+            id_number: res.data.id_number,
+            full_name: res.data.full_name
+          });
+        }
       })
       .catch(err => {
         console.log(err);

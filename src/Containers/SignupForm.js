@@ -9,7 +9,8 @@ class SignupForm extends React.Component {
     full_name: ``,
     password: ``,
     confirm_password: ``,
-    redirect: false
+    redirect: false,
+    user_group: ``
   };
 
   handleId = e => {
@@ -36,6 +37,14 @@ class SignupForm extends React.Component {
     });
   };
 
+  handleUserGroup = e => {
+    this.setState({
+      user_group: e.target.value
+    });
+  };
+
+
+
   handleSubmitButton = e => {
     e.preventDefault();
     axios
@@ -43,15 +52,19 @@ class SignupForm extends React.Component {
         id_number: this.state.id_number,
         full_name: this.state.full_name,
         password: this.state.password,
-        confirm_password: this.state.confirm_password
+        confirm_password: this.state.confirm_password,
+        user_group: this.state.user_group
       })
       .then(res => {
         console.log(res);
         if (res.data.success) {
           // create token for persistent login
           localStorage.setItem("authToken", res.data.auth_token);
-
-          alert("Student successfuly enrolled!");
+          if (this.state.user_group == "Student") {
+            alert("Student successfuly enrolled!");
+          } else {
+            alert("Teacher successfully enrolled!")
+          }
           return (window.location = "/homepage");
         } else {
           alert("Given student_id already exist! please change the student_id");
@@ -59,7 +72,8 @@ class SignupForm extends React.Component {
             id_number: ``,
             full_name: ``,
             password: ``,
-            confirm_password: ``
+            confirm_password: ``,
+            user_group: ``
           });
         }
       })
@@ -69,7 +83,7 @@ class SignupForm extends React.Component {
   };
 
   render() {
-    let { id_number, full_name, password, confirm_password } = this.state;
+    let { id_number, full_name, password, confirm_password, user_group } = this.state;
 
     return (
       <Container className="Signup">
@@ -120,69 +134,20 @@ class SignupForm extends React.Component {
                 onChange={this.handleConfPass}
               />
             </FormGroup>
-            <input
-              type="submit"
-              placeholder="Submit"
-              onClick={this.handleSubmitButton}
-            />
             <FormGroup>
-              <Label for="full_name">Full Name</Label>
+              <Label for="user_group">Select</Label>
               <Input
-                type="text"
-                name="full_name"
-                id="full_name"
-                placeholder="John Lewis"
-                value={full_name}
-                onChange={this.handleFullname}
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label for="password">Password</Label>
-              <Input
-                type="password"
-                name="password"
-                id="password"
-                placeholder="********"
-                value={password}
-                onChange={this.handlePass}
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label for="confirm_password">Confirm Password</Label>
-              <Input
-                type="password"
-                name="confirm_password"
-                id="confirm_password"
-                placeholder="********"
-                value={confirm_password}
-                onChange={this.handleConfPass}
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label for="student_checkbox">
-                <Input
-                  type="checkbox"
-                  name="student_checkbox"
-                  id="student_checkbox"
-                  placeholder="********"
-                  value={confirm_password}
-                  onChange={this.handleConfPass}
-                />
-                Student
-            </Label>
-            </FormGroup>
-            <FormGroup>
-              <Label for="Teacher_checkbox">
-                <Input
-                  type="checkbox"
-                  name="Teacher_checkbox"
-                  id="Teacher_checkbox"
-                  placeholder="********"
-                  value={confirm_password}
-                  onChange={this.handleConfPass}
-                />
-                Teacher
-            </Label>
+                onChange={this.handleUserGroup}
+                type="select"
+                value={user_group}
+                name="user_group"
+                id="user_group"
+                placeholder="Role"
+              >
+                <option selected>Select one</option>
+                <option value="Student">Student</option>
+                <option value="Teacher">Teacher</option>
+              </Input>
             </FormGroup>
 
 
@@ -194,7 +159,7 @@ class SignupForm extends React.Component {
             />
           </Form>
         </Col>
-      </Container>
+      </Container >
     );
   }
 }

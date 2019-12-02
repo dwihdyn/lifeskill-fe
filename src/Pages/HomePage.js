@@ -1,11 +1,13 @@
 import React from "react";
 import axios from "axios";
 import { Container, Row } from "react-bootstrap";
+import { func } from "prop-types";
 
 class HomePage extends React.Component {
   state = {
     clubs: [],
-    activities: []
+    activities: [],
+    fullname: ''
   };
 
   componentDidMount() {
@@ -23,18 +25,34 @@ class HomePage extends React.Component {
 
     axios
       .get("http://localhost:5000/api/v1/calendar/activity")
-      .then(function(response) {
+      .then(function (response) {
         console.log(response);
       })
 
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
-  }
+
+    axios
+      .get("http://localhost:5000/api/v1/students/login")
+      .then(response => {
+        console.log(response)
+        this.setState({
+          fullname: response.data.full_name
+        })
+      })
+
+      .catch(function (error) {
+        console.log(error)
+      });
+  };
 
   render() {
+    let { clubs, activities, full_name } = this.state;
     return (
       <>
+        <h2> Welcome back, {full_name}</h2>
+
         <h1 style={{ margin: "80px" }}>2019 School Calendar</h1>
         <Container>
           <h3>Clubs</h3>

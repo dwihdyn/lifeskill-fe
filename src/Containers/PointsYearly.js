@@ -1,35 +1,27 @@
 import React from "react";
-import { VictoryChart, VictoryLine, VictoryTheme } from "victory";
+import "../styles/scoreboard.css";
+import { Button } from "react-bootstrap";
 
-class PointsWeekly extends React.Component {
-  state = {
-    data: [
-      { skill: 1, points: 13000 },
-      { skill: 2, points: 16500 },
-      { skill: 3, points: 14250 }
-    ]
-  };
+class Scoreboard extends React.Component {
   render() {
     return (
-      <div style= {{ height: "50%", width: "50%"}}>
-        <VictoryChart theme={VictoryTheme.material}>
-          <VictoryLine
-            style={{
-              data: { stroke: "#c43a31" },
-              parent: { border: "1px solid #ccc" }
-            }}
-            data={[
-              { x: 1, y: 2 },
-              { x: 2, y: 3 },
-              { x: 3, y: 5 },
-              { x: 4, y: 4 },
-              { x: 5, y: 7 }
-            ]}
-          />
-        </VictoryChart>
+      <div className="scoreboard">
+        <div className="header">Leaderboard</div>
+        <div className="students">
+          <div className="student">
+            <div className="student-name">Student1</div>
+            <div className="student_score">
+              <Button className="give-points">Give Points</Button>
+            </div>
+          </div>
+
+          <div className="student">
+            Student2
+            <Button className="give-points">Give Points</Button>
+          </div>
+        </div>
       </div>
     );
   }
 }
-
-export default PointsWeekly;
+export default Scoreboard;

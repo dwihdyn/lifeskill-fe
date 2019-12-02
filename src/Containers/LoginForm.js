@@ -34,7 +34,13 @@ class LoginForm extends React.Component {
         console.log(res);
         if (res.data.success) {
           // create token for persistent login
-          localStorage.setItem("authToken", res.data.auth_token);
+          localStorage.setItem("authToken", res.data.authToken);
+
+          // save logged in user credential in local
+          localStorage.setItem("id_number", res.data.id_number);
+          alert("logged in successfully. welcome back " + res.data.full_name)
+
+
 
           return (window.location = "/homepage");
         } else {
@@ -56,7 +62,7 @@ class LoginForm extends React.Component {
     return (
       <Container className="Login">
         <Col lg={6} className="Login-header">
-          <h1 style={{ paddingTop: 100, paddingBottom: 30, }}>Log In</h1>
+          <h1 style={{ paddingTop: 100, paddingBottom: 30 }}>Log In</h1>
           <Form className="Login-form">
             <FormGroup>
               <Label for="id_number">ID Number</Label>

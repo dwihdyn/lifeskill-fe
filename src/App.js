@@ -18,7 +18,6 @@ class App extends React.Component {
 
   render() {
     return (
-<<<<<<< HEAD
       <>
         <NavBar handleLogout={this.handleLogout} />
         <Switch>
@@ -62,42 +61,6 @@ class App extends React.Component {
           />
         </Switch>
       </>
-=======
-      <div className="App-header">
-        <Route
-          exact
-          path="/login"
-          component={() => {
-            return <LoginSignupPage />;
-          }}
-        />
-        <Route
-          exact
-          path="/homepage"
-          component={() => {
-            return <HomePage />;
-          }}
-        />
-        <Route
-          exact
-          path="/profile"
-          component={() => {
-            return <StudentProfile />;
-          }}
-        />
-        <Route
-          exact
-          path="/"
-          component={() => {
-            return localStorage.getItem("authToken") ? (
-              <StudentProfile />
-            ) : (
-              <LoginSignupPage />
-            );
-          }}
-        />
-      </div>
->>>>>>> e68cbe9486c38905f8d91af7b042ff1c9b55445d
     );
   }
 }

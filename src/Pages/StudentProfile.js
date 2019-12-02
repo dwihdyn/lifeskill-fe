@@ -18,20 +18,53 @@ import PointsWeekly from "../Containers/PointsWeekly";
 import PointsYearly from "../Containers/PointsYearly";
 import PointsChartKick from "../Containers/PointsChartKick";
 import ClubProgress from "../Containers/ClubProgress";
+import axios from "axios";
 
 class StudentProfile extends React.Component {
   state = {
-    graph: "weekly"
+    graph: "weekly",
+    id_number: ``,
+    full_name: ``,
+    accumulated_score: ``
   };
+
   toggleView = e => {
     this.setState({ graph: e.target.name });
   };
+
+  componentDidMount() {
+    axios
+      .post("http://localhost:5000/api/v1/students/users/me", {
+        id_number: localStorage.getItem("id_number")
+      })
+      .then(res => {
+        this.setState({
+          id_number: res.data.id_number,
+          full_name: res.data.full_name,
+          creativity_score: res.data.creativity_score,
+          leadership_score: res.data.leadership_score,
+          respect_score: res.data.respect_score,
+          accumulated_score: res.data.accumulated_score
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
   render() {
-    const { graph } = this.state;
+    const { graph, id_number, full_name, accumulated_score } = this.state;
     let display_points;
 
     if (graph === "weekly") {
-      display_points = <PointsWeekly />;
+      display_points = (
+        <PointsWeekly
+          creativity_score={this.state.creativity_score}
+          leadership_score={this.state.leadership_score}
+          respect_score={this.state.respect_score}
+          accumulated_score={this.state.accumulated_score}
+        />
+      );
     } else if (graph === "yearly") {
       display_points = <PointsYearly />;
     } else if (graph === "chartkick") {
@@ -51,7 +84,7 @@ class StudentProfile extends React.Component {
               />
               <div className="Dashboard-sidebar-info">
                 <p>
-                  <strong>(Name)</strong>
+                  <strong>{full_name}</strong>
                 </p>
                 <p>Year 9</p>
               </div>
@@ -68,10 +101,10 @@ class StudentProfile extends React.Component {
             <Col className="Dashboard-charts" lg={10} sm={12}>
               <div className="Dashboard-charts-header">
                 <p className="Dashboard-charts-header-li">
-                  <strong>Hello, (Name). Welcome to your dashboard</strong>
+                  <strong>Hello, {full_name}. Welcome to your dashboard</strong>
                 </p>
                 <p className="Dashboard-charts-header-li">
-                  <strong>Total Points: (Total)</strong>
+                  <strong>Total Points: {accumulated_score}</strong>
                 </p>
               </div>
 

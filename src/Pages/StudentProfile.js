@@ -71,12 +71,13 @@ class StudentProfile extends React.Component {
         this.setState({
           favourites: newFave
         });
+        console.log(this.state.favourites);
       })
       .catch(error => {
         console.log(error);
       });
 
-      axios
+    axios
       .get("http://localhost:5000/api/v1/calendar/activity")
       .then(response => {
         let newActs = response.data.filter(favourite => {
@@ -110,8 +111,8 @@ class StudentProfile extends React.Component {
       display_points = <PointsChartKick />;
     }
 
-    const { favourite } = this.state.favourites.map(favourite => {});
-
+    console.log(this.state.favourites);
+    console.log(this.state.favActs);
     return (
       <>
         <Container className="Dashboard-container">
@@ -196,23 +197,13 @@ class StudentProfile extends React.Component {
                   </h3>
                   {/* <ClubProgress></ClubProgress> */}
                   {/* render progress for clubs */}
-                  {this.state.favourites.map(favourite => {
-                    return (
-                      <MyProgress
-                        key={favourite.id}
-                        favClubs={this.state.favourites}
-                      />
-                    );
-                  })}
+                  {this.state.favourites.map(favourite => (
+                    <MyProgress key={favourite.id} fave={favourite} />
+                  ))}
                   {/* render progress for activities */}
-                  {this.state.favourites.map(favourite => {
-                    return (
-                      <MyProgress
-                        key={favourite.id}
-                        favActs={this.state.favActs}
-                      />
-                    );
-                  })}
+                  {this.state.favActs.map(favAct => (
+                    <MyProgress key={favAct.id} fave={favAct} />
+                  ))}
                 </Col>
               </Row>
             </Col>

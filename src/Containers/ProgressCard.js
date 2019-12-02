@@ -11,12 +11,18 @@ class MyProgress extends React.Component {
   // };
 
   render = props => {
+    console.log(this.props.fave);
+
+    const { name, image, points } = this.props.fave;
+
     return (
       <>
         <div className="Progress">
-            <div className="Progress-wrapper">
-              <p>Progress Card</p>
-            </div>
+          <div className="Progress-wrapper">
+            <p>{name}</p>
+            <img src={image} />
+            <p>{points}</p>
+          </div>
         </div>
       </>
     );

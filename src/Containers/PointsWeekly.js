@@ -11,7 +11,7 @@ class PointsWeekly extends React.Component {
   };
   render() {
     return (
-      <div style= {{ height: "50%", width: "50%"}}>
+      <div style= {{ height: "40%", width: "40%"}}>
         <VictoryChart
           domainPadding={20}
           theme={VictoryTheme.material}

@@ -11,7 +11,7 @@ class PointsWeekly extends React.Component {
     };
     render() {
         return (
-            <div style={{ width: "50%"}}>
+            <div style={{ height: "40%", width: "40%"}}>
                 <VictoryChart domainPadding={20} theme={VictoryTheme.material}>
                     <VictoryAxis
                         // tickValues specifies both the number of ticks and where

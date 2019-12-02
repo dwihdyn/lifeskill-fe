@@ -7,8 +7,8 @@ import {
   Image,
   Card,
   ListGroup,
-  ListGroupItem,
-  Nav
+  Nav,
+  ProgressBar
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../styles/StudentProfile.css";
@@ -17,6 +17,7 @@ import profileImg from "../assets/profile_jw_small.png";
 import PointsWeekly from "../Containers/PointsWeekly";
 import PointsYearly from "../Containers/PointsYearly";
 import ClubProgress from "../Containers/ClubProgress";
+import MyProgress from "../Containers/MyProgress";
 
 class StudentProfile extends React.Component {
   state = {
@@ -39,7 +40,7 @@ class StudentProfile extends React.Component {
       <>
         <Container className="Dashboard-container">
           <Row className="Dashboard-row">
-            <Col className="Dashboard-sidebar" lg={2} sm={12}>
+            <Col className="Dashboard-sidebar" lg={2} md={2} sm={12}>
               <Image
                 className="Dashboard-sidebar-img"
                 src={profileImg}
@@ -54,15 +55,21 @@ class StudentProfile extends React.Component {
               </div>
               {/* Nav to display Points or Progress component */}
               <Nav defaultActiveKey="/home" className="flex-column">
-                <Nav.Link eventKey="link-1" style={{ color: "#fa8d19" }}>
+                <Nav.Link eventKey="link-1" className="Sidebar-link">
                   My Points
                 </Nav.Link>
-                <Nav.Link eventKey="link-2" style={{ color: "#fa8d19" }}>
+                <Nav.Link eventKey="link-2" className="Sidebar-link">
                   My Progress
                 </Nav.Link>
+                <Nav.Link eventKey="link-3" className="Sidebar-link">
+                  Missions
+                </Nav.Link>
+                <Nav.Link eventKey="link-4" className="Sidebar-link">
+                  Suspend
+                </Nav.Link> 
               </Nav>
             </Col>
-            <Col className="Dashboard-charts" lg={10} sm={12}>
+            <Col className="Dashboard-charts" lg={10} md={10} sm={12}>
               <div className="Dashboard-charts-header">
                 <p className="Dashboard-charts-header-li">
                   <strong>Hello, (Name). Welcome to your dashboard</strong>
@@ -79,13 +86,12 @@ class StudentProfile extends React.Component {
                     <div className="Wrapper-header">
                       {" "}
                       <h3 className="Dashboard-points-header">My Points</h3>
-
                       <p>Monday, 2/12/2019 - Sunday, 8/12/2019</p>
                     </div>
 
                     {/* Nav to toggle between weekly and yearly */}
                     <div className="Wrapper-btn">
-                    <Button
+                      <Button
                         className="Dashboard-points-button"
                         variant="warning"
                         name="weekly"
@@ -111,6 +117,7 @@ class StudentProfile extends React.Component {
                   {" "}
                   <h3 className="Dashboard-progress-header">My Progress</h3>
                   <ClubProgress></ClubProgress>
+                  {/* <MyProgress /> */}
                 </Col>
               </Row>
             </Col>

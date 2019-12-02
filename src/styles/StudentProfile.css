@@ -24,6 +24,10 @@
   margin: 20px 0 0 16px;
 }
 
+.Sidebar-link {
+  color: #fa8d19;
+}
+
 .Dashboard-charts {
   background-color: whitesmoke;
 }

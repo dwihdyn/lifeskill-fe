@@ -38,10 +38,12 @@ class StudentProfile extends React.Component {
         id_number: localStorage.getItem("id_number")
       })
       .then(res => {
-        console.log(res.data.accumulated_score);
         this.setState({
           id_number: res.data.id_number,
           full_name: res.data.full_name,
+          creativity_score: res.data.creativity_score,
+          leadership_score: res.data.leadership_score,
+          respect_score: res.data.respect_score,
           accumulated_score: res.data.accumulated_score
         });
       })
@@ -55,7 +57,14 @@ class StudentProfile extends React.Component {
     let display_points;
 
     if (graph === "weekly") {
-      display_points = <PointsWeekly />;
+      display_points = (
+        <PointsWeekly
+          creativity_score={this.state.creativity_score}
+          leadership_score={this.state.leadership_score}
+          respect_score={this.state.respect_score}
+          accumulated_score={this.state.accumulated_score}
+        />
+      );
     } else if (graph === "yearly") {
       display_points = <PointsYearly />;
     } else if (graph === "chartkick") {

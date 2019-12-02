@@ -1,0 +1,49 @@
+.scoreboard {
+  background: rgb(14, 96, 110);
+  margin: 70px auto;
+  box-shadow: 0 4px 0px #333;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  max-width: 1080px;
+  padding-bottom: 0.85em;
+}
+
+.header {
+  background-color: rgb(16, 140, 161);
+  padding: 5px 10px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  border-radius: 15px 15px 0 0;
+  border-bottom: solid 2px #444;
+}
+
+.students {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.student {
+  display: flex;
+  font-size: 1.2em;
+  border-bottom: solid 2px #444;
+  letter-spacing: 2px;
+  width: 100%;
+}
+
+.student-score {
+}
+
+.give-points {
+  border: none;
+  font-weight: bold;
+  color: #fafafa;
+  display: block;
+  padding: 20px 20px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

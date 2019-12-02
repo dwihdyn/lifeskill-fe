@@ -1,40 +1,20 @@
 import React from "react";
-import { VictoryAxis, VictoryBar, VictoryChart, VictoryTheme } from "victory";
+import { ColumnChart } from "react-chartkick";
+import "chart.js";
 
 class PointsWeekly extends React.Component {
-  state = {
-    data: [
-      { skill: 1, points: 13000 },
-      { skill: 2, points: 16500 },
-      { skill: 3, points: 14250 }
-    ]
-  };
+  // state = {[]};
   render() {
     return (
-      <div style= {{ height: "50%", width: "50%"}}>
-        <VictoryChart
-          domainPadding={20}
-          theme={VictoryTheme.material}
-        >
-          <VictoryAxis
-            // tickValues specifies both the number of ticks and where
-            // they are placed on the axis
-            tickValues={[1, 2, 3]}
-            tickFormat={["Creativity", "Leadership", "Respect"]}
-          />
-          <VictoryAxis
-            dependentAxis
-            // tickFormat specifies how ticks should be displayed
-            tickFormat={x => `${x / 100}`}
-          />
-          <VictoryBar
-            data={this.state.data}
-            // data accessor for x values
-            x="skill"
-            // data accessor for y values
-            y="points"
-          />
-        </VictoryChart>
+      <div style={{ height: "50%", width: "50%" }}>
+        <ColumnChart
+          data={[
+            ["Creativity", this.props.creativity_score],
+            ["Leadership", this.props.leadership_score],
+            ["Respect", this.props.respect_score],
+            ["Total", this.props.accumulated_score]
+          ]}
+        />
       </div>
     );
   }

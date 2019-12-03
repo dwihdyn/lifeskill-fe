@@ -161,6 +161,7 @@ class MoreInfoCard extends Component {
 
   render() {
     return (
+<<<<<<< HEAD
       <div className="App">
         <h1>Clubs</h1>
         <Slider>
@@ -178,6 +179,17 @@ class MoreInfoCard extends Component {
             </Slider.Item>
           ))}
         </Slider>
+=======
+      <div>
+        {this.state.arr.length > 0 ?
+          <Slider>
+          {this.state.arr.map((club,index) => (
+            <Slider.Item item={club} key={index}>item1</Slider.Item>
+          ))}
+          </Slider>
+          : null
+        }
+>>>>>>> eeed01926baef9ca02bee2aa16a72ee8bb73bb6d
       </div>
     );
   }

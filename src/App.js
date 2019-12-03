@@ -17,6 +17,7 @@ class App extends React.Component {
     localStorage.removeItem("authToken");
     localStorage.removeItem("id_number");
     localStorage.removeItem("id");
+    localStorage.removeItem("isStudent");
     return (window.location = "/");
   };
 

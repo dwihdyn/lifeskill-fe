@@ -18,10 +18,12 @@ class MyProgress extends React.Component {
       <>
         <div className="Progress">
           <div className="Progress-wrapper">
-            <ProgressBar variant="info" animated now={60} />
+            <ProgressBar variant="info" animated 
+            now={(this.props.accumulated_score / points) * 100} 
+            />
             {/* <img src={image} /> */}
             <p className="Progress-name">{name}</p>
-            <h4>{points}</h4>
+            <h4>{`${this.props.accumulated_score} out of ${points}`}</h4>
             <Button variant="warning">Apply</Button>
           </div>
         </div>

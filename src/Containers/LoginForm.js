@@ -40,8 +40,7 @@ class LoginForm extends React.Component {
           localStorage.setItem("id_number", res.data.id_number);
           alert("logged in successfully. welcome back " + res.data.full_name)
 
-
-
+          
           return (window.location = "/homepage");
         } else {
           alert("User does not exist, check the id or password");

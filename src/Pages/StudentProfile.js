@@ -20,7 +20,6 @@ import PointsYearly from "../Containers/PointsYearly";
 import PointsChartKick from "../Containers/PointsChartKick";
 import ClubProgress from "../Containers/ClubProgress";
 import MyProgress from "../Containers/MyProgress";
-import axios from "axios";
 
 class StudentProfile extends React.Component {
   state = {
@@ -38,7 +37,7 @@ class StudentProfile extends React.Component {
 
   componentDidMount() {
     axios
-      .post("http://localhost:5000/api/v1/students/users/me", {
+      .post("http://localhost:5000/api/v1/students/users/<id>", {
         id_number: localStorage.getItem("id_number")
       })
       .then(res => {

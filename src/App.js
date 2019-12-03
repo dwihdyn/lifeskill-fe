@@ -1,6 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import StudentProfile from "./Pages/StudentProfile";
 import HomePage from "./Pages/HomePage";
 import LandingPage from "./Pages/LandingPage";

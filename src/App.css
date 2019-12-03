@@ -19,3 +19,9 @@
 .Landing-special {
   color: #FA8D19; 
 }
+
+.carousel-inner {
+  width: 70%;
+  height: 80%;
+  margin: auto;
+}

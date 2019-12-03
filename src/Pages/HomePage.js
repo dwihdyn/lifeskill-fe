@@ -10,7 +10,7 @@ class HomePage extends React.Component {
     activities: [],
     isLoadingClub: true,
     isLoadingAct: true,
-    student_id: 1,
+    student_id: null,
     fullname: ""
   };
 
@@ -36,6 +36,9 @@ class HomePage extends React.Component {
   }
 
   componentDidMount() {
+    this.setState({
+      student_id: localStorage.getItem("id")
+    })
     axios
       .get("http://localhost:5000/api/v1/calendar/clubs")
       .then(response => {

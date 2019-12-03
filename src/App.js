@@ -1,13 +1,15 @@
 import React from "react";
-import "./App.css";
-import { Route, Switch } from "react-router-dom";
-
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Route } from "react-router-dom";
 import StudentProfile from "./Pages/StudentProfile";
 import HomePage from "./Pages/HomePage";
 import LandingPage from "./Pages/LandingPage";
 import NavBar from "./Components/NavBar";
 import LoginForm from "./Containers/LoginForm";
 import SignupForm from "./Containers/SignupForm";
+import HomePage2 from "./Pages/HomePage2";
+
+import "./App.css";
 
 class App extends React.Component {
   handleLogout = () => {
@@ -28,7 +30,6 @@ class App extends React.Component {
               return <LandingPage />;
             }}
           />
-
           <Route
             exact
             path="/login"
@@ -36,7 +37,6 @@ class App extends React.Component {
               return <LoginForm />;
             }}
           />
-
           <Route
             exact
             path="/signup"
@@ -44,12 +44,18 @@ class App extends React.Component {
               return <SignupForm />;
             }}
           />
-
           <Route
             exact
             path="/homepage"
             component={() => {
               return <HomePage />;
+            }}
+          />
+          <Route
+            exact
+            path="/homepage2"
+            component={() => {
+              return <HomePage2 />;
             }}
           />
           <Route

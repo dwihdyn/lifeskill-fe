@@ -1,28 +1,16 @@
 import React from "react";
-import {
-  Container,
-  Col,
-  Row,
-  Button,
-  Image,
-  Card,
-  ListGroup,
-  Nav,
-  ProgressBar
-} from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Container, Col, Row, Button, Image, Nav } from "react-bootstrap";
 import "../styles/StudentProfile.css";
 import axios from "axios";
 
 import profileImg from "../assets/profile_jw_small.png";
 import PointsWeekly from "../Containers/PointsWeekly";
-import PointsYearly from "../Containers/PointsYearly";
-import ClubProgress from "../Containers/ClubProgress";
+import ScoreboardStd from "../Containers/ScoreboardStd";
 import MyProgress from "../Containers/ProgressCard";
 
 class StudentProfile extends React.Component {
   state = {
-    graph: "weekly",
+    graph: "Own",
     id_number: ``,
     full_name: ``,
     accumulated_score: ``,
@@ -114,7 +102,7 @@ class StudentProfile extends React.Component {
     } = this.state;
     let display_points;
 
-    if (graph === "weekly") {
+    if (graph === "Own") {
       display_points = (
         <PointsWeekly
           creativity_score={this.state.creativity_score}
@@ -124,7 +112,7 @@ class StudentProfile extends React.Component {
         />
       );
     } else if (graph === "yearly") {
-      display_points = <PointsYearly ranking={this.state.ranking} />;
+      display_points = <ScoreboardStd ranking={this.state.ranking} />;
     }
     console.log(this.state.favourites);
     console.log(this.state.favActs);
@@ -172,15 +160,15 @@ class StudentProfile extends React.Component {
                       <h3 className="Dashboard-points-header">My Points</h3>
                     </div>
 
-                    {/* Nav to toggle between weekly and yearly */}
+                    {/* Nav to toggle between Own and yearly */}
                     <div className="Wrapper-btn">
                       <Button
                         className="Dashboard-points-button"
                         variant="warning"
-                        name="weekly"
+                        name="Own"
                         onClick={e => this.toggleView(e)}
                       >
-                        Weekly
+                        Own
                       </Button>
                       <Button
                         className="Dashboard-points-button"
@@ -188,7 +176,7 @@ class StudentProfile extends React.Component {
                         name="yearly"
                         onClick={e => this.toggleView(e)}
                       >
-                        Year-To-Date
+                        Top5
                       </Button>
                     </div>
                   </div>

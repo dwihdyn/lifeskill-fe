@@ -19,8 +19,7 @@ import PointsWeekly from "../Containers/PointsWeekly";
 import PointsYearly from "../Containers/PointsYearly";
 import PointsChartKick from "../Containers/PointsChartKick";
 import ClubProgress from "../Containers/ClubProgress";
-import MyProgress from "../Containers/MyProgress";
-import axios from "axios";
+import MyProgress from "../Containers/ProgressCard";
 
 class StudentProfile extends React.Component {
   state = {
@@ -42,7 +41,7 @@ class StudentProfile extends React.Component {
         id_number: localStorage.getItem("id_number")
       })
       .then(res => {
-        console.log(res.data)
+        console.log(res.data);
         if (res.data.isStudent) {
           this.setState({
             id_number: res.data.id_number,
@@ -60,9 +59,10 @@ class StudentProfile extends React.Component {
         }
       })
       .catch(err => {
-        console.log(err);});
+        console.log(err);
+      });
 
-     axios   
+    axios
       .get("http://localhost:5000/api/v1/calendar/club")
       .then(response => {
         let newFave = response.data.filter(favourite => {
@@ -90,7 +90,7 @@ class StudentProfile extends React.Component {
       .catch(error => {
         console.log(error);
       });
-  };
+  }
 
   render() {
     const { graph, id_number, full_name, accumulated_score } = this.state;
@@ -196,7 +196,11 @@ class StudentProfile extends React.Component {
                   {/* <ClubProgress></ClubProgress> */}
                   {/* render progress for clubs */}
                   {this.state.favourites.map(favourite => (
-                    <MyProgress key={favourite.id} fave={favourite} />
+                    <MyProgress
+                      key={favourite.id}
+                      fave={favourite}
+                      accumulated_score={accumulated_score}
+                    />
                   ))}
                   {/* render progress for activities */}
                   {this.state.favActs.map(favAct => (

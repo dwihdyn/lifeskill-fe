@@ -8,7 +8,6 @@ import NavBar from "./Components/NavBar";
 import LoginForm from "./Containers/LoginForm";
 import SignupForm from "./Containers/SignupForm";
 
-
 import "./App.css";
 
 class App extends React.Component {

@@ -36,6 +36,7 @@ class LoginForm extends React.Component {
           localStorage.setItem("authToken", res.data.authToken);
           localStorage.setItem("id_number", res.data.id_number);
           localStorage.setItem("id", res.data.id);
+          localStorage.setItem("isStudent", JSON.stringify(res.data.isStudent));
           alert("logged in successfully. welcome back " + res.data.full_name);
           return (window.location = "/homepage");
         } else {

@@ -8,19 +8,28 @@ class Scoreboard extends React.Component {
     return (
       <>
         <div className="scoreboard">
-          <div className="header">Leaderboard</div>
+          <div className="title">Leaderboard</div>
+          <div className="header d-flex justify-content-between">
+            <div className="">Name</div>
+            <div className="d-flex">
+              <div className="mx-5">Score</div>
+              <div className="mx-5">Score</div>
+            </div>
+          </div>
           <div className="students">
-            <div className="student">
-              <div className="student-name">Student1</div>
-              <div className="student_score">
-                <Button className="give-points">Give Points</Button>
+            {this.props.ranking.map((rank, index) => (
+              <div
+                className="student d-flex justify-content-between"
+                key={index}
+              >
+                <div className="student-name mx-2">{rank.name}</div>
+                <div className="student-score">
+                  <Button className="give-points">Give Points</Button>
+                  <div className="mx-5">{rank.score}</div>
+                  <div className="mx-5">{rank.anotherScore}</div>
+                </div>
               </div>
-            </div>
-
-            <div className="student">
-              Student2
-              <Button className="give-points">Give Points</Button>
-            </div>
+            ))}
           </div>
         </div>
       </>

@@ -27,8 +27,7 @@ class StudentProfile extends React.Component {
     full_name: ``,
     accumulated_score: ``,
     favourites: [],
-    favActs: [],
-    ranking: []
+    favActs: []
   };
 
   toggleView = e => {
@@ -90,28 +89,10 @@ class StudentProfile extends React.Component {
       .catch(error => {
         console.log(error);
       });
-
-    axios
-      .get("http://localhost:5000/api/v1/students/scoreboard")
-      .then(res => {
-        console.log(res.data.ranking);
-        this.setState({
-          ranking: res.data.ranking
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
   }
 
   render() {
-    const {
-      graph,
-      id_number,
-      full_name,
-      accumulated_score,
-      ranking
-    } = this.state;
+    const { graph, id_number, full_name, accumulated_score } = this.state;
     let display_points;
 
     if (graph === "weekly") {
@@ -124,7 +105,7 @@ class StudentProfile extends React.Component {
         />
       );
     } else if (graph === "yearly") {
-      display_points = <PointsYearly ranking={this.state.ranking} />;
+      display_points = <PointsYearly />;
     }
     console.log(this.state.favourites);
     console.log(this.state.favActs);
@@ -193,25 +174,6 @@ class StudentProfile extends React.Component {
                     </div>
                   </div>
                   {display_points}
-                </Col>
-              </Row>
-              <Row>
-                <Col className="Dashboard-progress">
-                  {" "}
-                  <h3 className="Dashboard-progress-header">My Progress</h3>
-                  {/* <ClubProgress></ClubProgress> */}
-                  {/* render progress for clubs */}
-                  {this.state.favourites.map(favourite => (
-                    <MyProgress
-                      key={favourite.id}
-                      fave={favourite}
-                      accumulated_score={accumulated_score}
-                    />
-                  ))}
-                  {/* render progress for activities */}
-                  {this.state.favActs.map(favAct => (
-                    <MyProgress key={favAct.id} fave={favAct} />
-                  ))}
                 </Col>
               </Row>
             </Col>

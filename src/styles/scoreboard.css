@@ -9,6 +9,12 @@
   padding-bottom: 0.85em;
 }
 
+.title {
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+}
+
 .header {
   background-color: rgb(16, 140, 161);
   padding: 5px 10px;
@@ -32,7 +38,12 @@
   width: 100%;
 }
 
+.student-name {
+  margin-right: 10px;
+}
+
 .student-score {
+  display: flex;
 }
 
 .give-points {
@@ -40,7 +51,6 @@
   font-weight: bold;
   color: #fafafa;
   display: block;
-  padding: 20px 20px;
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;

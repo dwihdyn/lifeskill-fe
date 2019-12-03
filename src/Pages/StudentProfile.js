@@ -37,7 +37,7 @@ class StudentProfile extends React.Component {
 
   componentDidMount() {
     axios
-      .post("http://localhost:5000/api/v1/students/users/<id>", {
+      .post("http://localhost:5000/api/v1/students/users/me", {
         id_number: localStorage.getItem("id_number")
       })
       .then(res => {
@@ -96,20 +96,20 @@ class StudentProfile extends React.Component {
     const { graph, id_number, full_name, accumulated_score } = this.state;
     let display_points;
 
-    // if (graph === "weekly") {
-    //   display_points = (
-    //     <PointsWeekly
-    //       creativity_score={this.state.creativity_score}
-    //       leadership_score={this.state.leadership_score}
-    //       respect_score={this.state.respect_score}
-    //       accumulated_score={this.state.accumulated_score}
-    //     />
-    //   );
-    // } else if (graph === "yearly") {
-    //   display_points = <PointsYearly />;
-    // } else if (graph === "chartkick") {
-    //   display_points = <PointsChartKick />;
-    // }
+    if (graph === "weekly") {
+      display_points = (
+        <PointsWeekly
+          creativity_score={this.state.creativity_score}
+          leadership_score={this.state.leadership_score}
+          respect_score={this.state.respect_score}
+          accumulated_score={this.state.accumulated_score}
+        />
+      );
+    } else if (graph === "yearly") {
+      display_points = <PointsYearly />;
+    } else if (graph === "chartkick") {
+      display_points = <PointsChartKick />;
+    }
 
     console.log(this.state.favourites);
     console.log(this.state.favActs);
@@ -132,17 +132,9 @@ class StudentProfile extends React.Component {
               </div>
               {/* Nav to display Points or Progress component */}
               <Nav defaultActiveKey="/home" className="flex-column">
-                <Nav.Link eventKey="link-1" className="Sidebar-link">
-                  My Points
-                </Nav.Link>
-                <Nav.Link eventKey="link-2" className="Sidebar-link">
-                  My Progress
-                </Nav.Link>
-                <Nav.Link eventKey="link-3" className="Sidebar-link">
-                  Missions
-                </Nav.Link>
-                <Nav.Link eventKey="link-4" className="Sidebar-link">
-                  Suspend
+                <Nav.Link className="Sidebar-link">
+                  “Ask not what your country can do for you – ask what you can
+                  do for your country”
                 </Nav.Link>
               </Nav>
             </Col>
@@ -163,7 +155,6 @@ class StudentProfile extends React.Component {
                     <div className="Wrapper-header">
                       {" "}
                       <h3 className="Dashboard-points-header">My Points</h3>
-                      <p>Monday, 2/12/2019 - Sunday, 8/12/2019</p>
                     </div>
 
                     {/* Nav to toggle between weekly and yearly */}

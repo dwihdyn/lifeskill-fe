@@ -13,7 +13,7 @@ const NavBar = props => {
             <>
               <Nav.Link href="/homepage">School Calendar</Nav.Link>
               <Nav.Link href="/profile">My Dashboard</Nav.Link>
-              <Nav.Link href="#">Give Points</Nav.Link>
+              <Nav.Link href="/givepoints">Give Points</Nav.Link>
               <Nav.Link onClick={props.handleLogout}>Sign Out</Nav.Link>
             </>
           ) : (

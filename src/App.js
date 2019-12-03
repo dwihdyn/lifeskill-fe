@@ -8,6 +8,7 @@ import NavBar from "./Components/NavBar";
 import LoginForm from "./Containers/LoginForm";
 import SignupForm from "./Containers/SignupForm";
 import TeacherProfile from "./Pages/TeacherProfile";
+import GivePoints from "./Containers/GivePoints";
 
 import "./App.css";
 
@@ -64,6 +65,13 @@ class App extends React.Component {
               } else {
                 return <TeacherProfile />;
               }
+            }}
+          />
+          <Route
+            exact
+            path="/givepoints"
+            component={() => {
+              return <GivePoints />;
             }}
           />
         </Switch>

@@ -23,9 +23,14 @@ class Scoreboard extends React.Component {
               >
                 <div className="student-name mx-2">{rank.name}</div>
                 <div className="student-score">
-                  <Button className="btn-sm">Give Points</Button>
+                  {/* <Button className="btn-sm">Give Points</Button> */}
                   <div className="mx-5">{rank.score}</div>
-                  <div className="mx-5">{rank.anotherScore}</div>
+
+                  {rank.anotherScore > 50 ? (
+                    <div className="mx-5 text-danger">{rank.anotherScore}</div>
+                  ) : (
+                    <div className="mx-5">{rank.anotherScore}</div>
+                  )}
                 </div>
               </div>
             ))}

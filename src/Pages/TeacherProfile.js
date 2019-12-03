@@ -13,7 +13,7 @@ import {
 import "../styles/StudentProfile.css";
 import axios from "axios";
 
-import profileImg from "../assets/profile_jw_small.png";
+import profileImg from "../assets/images/dumbledore.jpeg";
 import ScoreboardTch from "../Containers/ScoreboardTch";
 
 class TeacherProfile extends React.Component {
@@ -142,9 +142,13 @@ class TeacherProfile extends React.Component {
                   <div className="Wrapper">
                     <div className="Wrapper-header">
                       {" "}
-                      <h3 className="Dashboard-points-header">
+                      <h3 className="Dashboard-points-header w-100">
                         Student Dashboard
                       </h3>
+                      <p className="Dashboard-points-header w-100">
+                        Reach out to the student when their Dropout rate higher
+                        than 50%
+                      </p>
                     </div>
                   </div>
                   {display_points}

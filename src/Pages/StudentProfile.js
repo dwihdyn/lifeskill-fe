@@ -62,7 +62,7 @@ class StudentProfile extends React.Component {
       });
 
     axios
-      .get("http://localhost:5000/api/v1/calendar/club")
+      .get("http://localhost:5000/api/v1/calendar/clubs")
       .then(response => {
         let newFave = response.data.filter(favourite => {
           return favourite.fav;
@@ -77,7 +77,7 @@ class StudentProfile extends React.Component {
       });
 
     axios
-      .get("http://localhost:5000/api/v1/calendar/activity")
+      .get("http://localhost:5000/api/v1/calendar/activities")
       .then(response => {
         let newActs = response.data.filter(favourite => {
           return favourite.fav;

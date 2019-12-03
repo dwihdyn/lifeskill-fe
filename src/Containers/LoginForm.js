@@ -65,7 +65,7 @@ class LoginForm extends React.Component {
               <Input
                 type="text"
                 id="id_number"
-                placeholder="11 to see inside"
+                placeholder="Student ID"
                 value={id_number}
                 onChange={this.handleIdNumber}
               />
@@ -76,7 +76,7 @@ class LoginForm extends React.Component {
                 type="password"
                 name="password"
                 id="password"
-                placeholder="111"
+                placeholder="Don't tell anyone....."
                 value={password}
                 onChange={this.handlePassword}
               />

@@ -2,15 +2,7 @@ import React from "react";
 import axios from "axios";
 import "../styles/HomePage.css";
 
-import {
-  Button,
-  Carousel,
-  Card,
-  Row,
-  Col,
-  CarouselItem,
-  Container
-} from "react-bootstrap";
+import { Button, Carousel, Card, Row, Col, CarouselItem, Container } from 'react-bootstrap';
 
 class HomePage extends React.Component {
   state = {
@@ -18,7 +10,7 @@ class HomePage extends React.Component {
     activities: [],
     isLoadingClub: true,
     isLoadingAct: true,
-    student_id: 1,
+    student_id: null,
     fullname: ""
   };
 
@@ -29,26 +21,57 @@ class HomePage extends React.Component {
         category_id: category_id
       })
       .then(response => {
-        let copy = [...this.state[category]];
-        copy[index].fav = !copy[index].fav;
+
+        let copy = [...this.state[category]]
+        copy[index].fav = !copy[index].fav
 
         this.setState({
           [category]: [...copy]
         });
+       
       })
       .catch(error => {
         console.log(error);
       });
-  };
+  }
 
   componentDidMount() {
+    this.setState({
+      student_id: localStorage.getItem("id")
+    })
     axios
       .get("http://localhost:5000/api/v1/calendar/clubs")
       .then(response => {
-        // console.log(response);
         this.setState({
           clubs: response.data,
           isLoadingClub: false
+        });
+        console.log(response.data)
+      })
+      .catch(error => {
+        console.log(error);
+      });
+      
+    axios
+      .get("http://localhost:5000/api/v1/calendar/activities")
+      .then(response => {
+        // console.log(response);
+        this.setState({
+          activities: response.data,
+          isLoadingAct: false
+        });
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+      axios
+      .get("http://localhost:5000/api/v1/calendar/activities")
+      .then(response => {
+        // console.log(response);
+        this.setState({
+          activities: response.data,
+          isLoadingAct: false
         });
         console.log(response.data);
       })
@@ -166,65 +189,30 @@ class HomePage extends React.Component {
           <Row className="Activities-wrapper">
             <h3 className="Activities-header">Activities</h3>
             <Col>
-              <Carousel
-                indicators={false}
-                prevIcon={
-                  <h2
-                    aria-hidden="true"
-                    style={{
-                      color: "black",
-                      fontWeight: "bolder",
-                      display: "inline"
-                    }}
-                  >
-                    &lt;
-                  </h2>
-                }
-                nextIcon={
-                  <h2
-                    aria-hidden="true"
-                    style={{
-                      color: "black",
-                      fontWeight: "bolder",
-                      display: "inline"
-                    }}
-                  >
-                    &gt;
-                  </h2>
-                }
-              >
-                {activitiesMatrix.map((actArr, index) => (
-                  <CarouselItem>
-                    <Row>
-                      {actArr.map((activity, index) => (
-                        <Col>
-                          <Card>
-                            <Card.Img variant="top" src={activity.image} />
-                            <Card.Body>
-                              <Card.Title>{activity.name}</Card.Title>
-                              <Card.Text>{activity.description}</Card.Text>
-                              <Button
-                                variant={activity.fav ? "danger" : "secondary"}
-                                onClick={() =>
-                                  this.handleClick(
-                                    activity.id,
-                                    this.state.student_id,
-                                    "activities",
-                                    index
-                                  )
-                                }
-                                key={activity.name}
-                              >
-                                {activity.fav ? fullHeart : hollowHeart}
-                              </Button>
-                            </Card.Body>
-                          </Card>
-                        </Col>
-                      ))}
-                    </Row>
-                  </CarouselItem>
-                ))}
-              </Carousel>
+              <Carousel indicators={false}
+            prevIcon={<h2 aria-hidden="true" style={{color: 'black', fontWeight: "bolder", display: 'inline'}}>&lt;</h2>} 
+            nextIcon={<h2 aria-hidden="true" style={{color: 'black', fontWeight: "bolder", display: 'inline'}}>&gt;</h2>}>
+            {activitiesMatrix.map((actArr, index) => 
+                <CarouselItem>
+                  <Row>
+                    {actArr.map((activity, index) => 
+                      <Col>
+                        <Card>
+                          <Card.Img variant="top" src={activity.image} />
+                          <Card.Body>
+                          <Card.Title>{activity.name}</Card.Title>
+                          <Card.Text>{activity.description}</Card.Text>
+                            <Button variant={activity.fav?"danger":"secondary"} 
+                            onClick={() => this.handleClick(activity.id, this.state.student_id, "activities", index)} 
+                            key={activity.name}>{activity.fav?fullHeart:hollowHeart}</Button>
+                          </Card.Body>
+                        </Card>
+                      </Col>
+                    )}
+                  </Row>
+                </CarouselItem>
+              )}
+            </Carousel>
             </Col>
           </Row>
         </Container>

@@ -161,25 +161,6 @@ class MoreInfoCard extends Component {
 
   render() {
     return (
-<<<<<<< HEAD
-      <div className="App">
-        <h1>Clubs</h1>
-        <Slider>
-          {clubs.map(club => (
-            <Slider.Item item={club} key={club.id}>
-              item1
-            </Slider.Item>
-          ))}
-        </Slider>
-        <h1>Activities</h1>
-        <Slider>
-          {activities.map(activity => (
-            <Slider.Item item={activity} key={activity.id}>
-              item1
-            </Slider.Item>
-          ))}
-        </Slider>
-=======
       <div>
         {this.state.arr.length > 0 ?
           <Slider>
@@ -189,7 +170,6 @@ class MoreInfoCard extends Component {
           </Slider>
           : null
         }
->>>>>>> eeed01926baef9ca02bee2aa16a72ee8bb73bb6d
       </div>
     );
   }

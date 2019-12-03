@@ -42,9 +42,6 @@ class HomePage extends React.Component {
     axios
       .get("http://localhost:5000/api/v1/calendar/clubs")
       .then(response => {
-        let copy = [...this.state[category]];
-        copy[index].fav = !copy[index].fav;
-
         this.setState({
           clubs: response.data,
           isLoadingClub: false

@@ -7,6 +7,9 @@ import LandingPage from "./Pages/LandingPage";
 import NavBar from "./Components/NavBar";
 import LoginForm from "./Containers/LoginForm";
 import SignupForm from "./Containers/SignupForm";
+import HomePage2 from "./Pages/HomePage2";
+
+import "./App.css";
 
 import "./App.css";
 
@@ -48,6 +51,13 @@ class App extends React.Component {
             path="/homepage"
             component={() => {
               return <HomePage />;
+            }}
+          />
+          <Route
+            exact
+            path="/homepage2"
+            component={() => {
+              return <HomePage2 />;
             }}
           />
           <Route

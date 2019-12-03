@@ -55,6 +55,19 @@ class HomePage extends React.Component {
       .catch(error => {
         console.log(error);
       });
+      axios
+      .get("http://localhost:5000/api/v1/calendar/activities")
+      .then(response => {
+        // console.log(response);
+        this.setState({
+          activities: response.data,
+          isLoadingAct: false
+        });
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   render() {

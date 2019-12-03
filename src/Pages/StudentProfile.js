@@ -37,7 +37,7 @@ class StudentProfile extends React.Component {
 
   componentDidMount() {
     axios
-      .post("http://localhost:5000/api/v1/students/users/me", {
+      .post("http://localhost:5000/api/v1/students/users/<id>", {
         id_number: localStorage.getItem("id_number")
       })
       .then(res => {
@@ -96,20 +96,20 @@ class StudentProfile extends React.Component {
     const { graph, id_number, full_name, accumulated_score } = this.state;
     let display_points;
 
-    if (graph === "weekly") {
-      display_points = (
-        <PointsWeekly
-          creativity_score={this.state.creativity_score}
-          leadership_score={this.state.leadership_score}
-          respect_score={this.state.respect_score}
-          accumulated_score={this.state.accumulated_score}
-        />
-      );
-    } else if (graph === "yearly") {
-      display_points = <PointsYearly />;
-    } else if (graph === "chartkick") {
-      display_points = <PointsChartKick />;
-    }
+    // if (graph === "weekly") {
+    //   display_points = (
+    //     <PointsWeekly
+    //       creativity_score={this.state.creativity_score}
+    //       leadership_score={this.state.leadership_score}
+    //       respect_score={this.state.respect_score}
+    //       accumulated_score={this.state.accumulated_score}
+    //     />
+    //   );
+    // } else if (graph === "yearly") {
+    //   display_points = <PointsYearly />;
+    // } else if (graph === "chartkick") {
+    //   display_points = <PointsChartKick />;
+    // }
 
     console.log(this.state.favourites);
     console.log(this.state.favActs);
@@ -192,7 +192,7 @@ class StudentProfile extends React.Component {
               <Row>
                 <Col className="Dashboard-progress">
                   {" "}
-                  <h3 className="Dashboard-progress-header">My Progress:</h3>
+                  <h3 className="Dashboard-progress-header">My Progress</h3>
                   {/* <ClubProgress></ClubProgress> */}
                   {/* render progress for clubs */}
                   {this.state.favourites.map(favourite => (

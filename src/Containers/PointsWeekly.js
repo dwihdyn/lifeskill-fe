@@ -1,5 +1,6 @@
 import React from "react";
 import { ColumnChart } from "react-chartkick";
+import { VictoryAxis, VictoryBar, VictoryChart, VictoryTheme } from "victory";
 import "chart.js";
 
 class PointsWeekly extends React.Component {

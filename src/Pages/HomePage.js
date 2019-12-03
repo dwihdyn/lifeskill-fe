@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
-import { Container, Row } from "react-bootstrap";
+import "../styles/HomePage.css";
+
+import { Container, Row, Col } from "react-bootstrap";
 import { func } from "prop-types";
 
 class HomePage extends React.Component {
@@ -39,13 +41,23 @@ class HomePage extends React.Component {
     return (
       <>
         <h2> Welcome back, {full_name}</h2>
+        <Container className="Homepage">
+          <Row className="Header-wrapper">
+            <Col className="Homepage-header">
+              <h1>2019 School Calendar</h1>
+              <p>Choose your favourite clubs and activities.</p>
+            </Col>
+          </Row>
 
-        <h1 style={{ margin: "80px" }}>2019 School Calendar</h1>
-        <Container>
-          <h3>Clubs</h3>
-          <Row style={{ height: "200px", border: "1px solid black" }}></Row>
-          <h3>Activities</h3>
-          <Row style={{ height: "200px", border: "1px solid black" }}></Row>
+          <Row className="Clubs-wrapper">
+            <h3 className="Clubs-header">Clubs</h3>
+            <Col>{/* INSERT CODE FOR SLIDER HERE */}</Col>
+          </Row>
+
+          <Row className="Activities-wrapper">
+            <h3 className="Activities-header">Activities</h3>
+            <Col>{/* INSERT CODE FOR SLIDER HERE */}</Col>
+          </Row>
         </Container>
         {/* <MoreInfoCard />; */}
       </>

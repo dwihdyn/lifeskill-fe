@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/scoreboard.css";
 import { Button } from "react-bootstrap";
+import { VictoryChart, VictoryLine, VictoryTheme } from "victory";
 
 class Scoreboard extends React.Component {
   render() {

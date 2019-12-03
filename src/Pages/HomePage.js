@@ -13,7 +13,7 @@ class HomePage extends React.Component {
     axios
       .get("http://localhost:5000/api/v1/calendar/club")
       .then(response => {
-        console.log(response);
+        // console.log(response);
         this.setState({
           clubs: response.data
         });
@@ -24,21 +24,30 @@ class HomePage extends React.Component {
 
     axios
       .get("http://localhost:5000/api/v1/calendar/activity")
-      .then(function(response) {
-        console.log(response);
+      .then(response => {
+        // console.log(response);
+        this.setState({
+          activities: response.data
+        });
       })
-
-      .catch(function(error) {
+      .catch(error => {
         console.log(error);
       });
   }
 
   render() {
     return (
-        <>
-          <h1>Homepage</h1>
-          <MoreInfoCard clubs={this.state.clubs}/>
-        </>
+      <>
+        <h1>Homepage</h1>
+        <h3>Class</h3>
+        {this.state.clubs.length > 0 &&
+        <MoreInfoCard arr={this.state.clubs}/>
+        }
+        <h3>Activities</h3>
+        {this.state.activities.length > 0 &&
+        <MoreInfoCard arr={this.state.activities}/>
+        }
+      </>
     )
 
   }

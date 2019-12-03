@@ -1,11 +1,12 @@
 import React from "react";
-import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Route } from "react-router-dom";
 
 import LoginSignupPage from "./Pages/LoginSignupPage";
 import StudentProfile from "./Pages/StudentProfile";
 import HomePage from "./Pages/HomePage";
+import HomePage2 from "./Pages/HomePage2";
+import "./App.css";
 
 class App extends React.Component {
   render() {
@@ -23,6 +24,13 @@ class App extends React.Component {
           path="/homepage"
           component={() => {
             return <HomePage />;
+          }}
+        />
+        <Route
+          exact
+          path="/homepage2"
+          component={() => {
+            return <HomePage2 />;
           }}
         />
         <Route

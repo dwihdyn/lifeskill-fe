@@ -16,7 +16,7 @@ class HomePage extends React.Component {
     axios
       .get("http://localhost:5000/api/v1/calendar/club")
       .then(response => {
-        console.log(response);
+        // console.log(response);
         this.setState({
           clubs: response.data
         });
@@ -27,11 +27,13 @@ class HomePage extends React.Component {
 
     axios
       .get("http://localhost:5000/api/v1/calendar/activity")
-      .then(function(response) {
-        console.log(response);
+      .then(response => {
+        // console.log(response);
+        this.setState({
+          activities: response.data
+        });
       })
-
-      .catch(function(error) {
+      .catch(error => {
         console.log(error);
       });
 

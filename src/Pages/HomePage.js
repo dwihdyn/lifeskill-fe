@@ -7,7 +7,7 @@ class HomePage extends React.Component {
   state = {
     clubs: [],
     activities: [],
-    fullname: ''
+    fullname: ""
   };
 
   componentDidMount() {
@@ -25,27 +25,14 @@ class HomePage extends React.Component {
 
     axios
       .get("http://localhost:5000/api/v1/calendar/activity")
-      .then(function (response) {
+      .then(function(response) {
         console.log(response);
       })
 
-      .catch(function (error) {
+      .catch(function(error) {
         console.log(error);
       });
-
-    axios
-      .get("http://localhost:5000/api/v1/students/login")
-      .then(response => {
-        console.log(response)
-        this.setState({
-          fullname: response.data.full_name
-        })
-      })
-
-      .catch(function (error) {
-        console.log(error)
-      });
-  };
+  }
 
   render() {
     let { clubs, activities, full_name } = this.state;
@@ -62,7 +49,6 @@ class HomePage extends React.Component {
         </Container>
         {/* <MoreInfoCard />; */}
       </>
-
     );
   }
 }

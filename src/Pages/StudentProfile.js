@@ -17,7 +17,6 @@ import axios from "axios";
 import profileImg from "../assets/profile_jw_small.png";
 import PointsWeekly from "../Containers/PointsWeekly";
 import PointsYearly from "../Containers/PointsYearly";
-import PointsChartKick from "../Containers/PointsChartKick";
 import ClubProgress from "../Containers/ClubProgress";
 import MyProgress from "../Containers/ProgressCard";
 
@@ -107,10 +106,7 @@ class StudentProfile extends React.Component {
       );
     } else if (graph === "yearly") {
       display_points = <PointsYearly />;
-    } else if (graph === "chartkick") {
-      display_points = <PointsChartKick />;
     }
-
     console.log(this.state.favourites);
     console.log(this.state.favActs);
     return (

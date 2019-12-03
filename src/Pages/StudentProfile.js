@@ -18,8 +18,7 @@ import profileImg from "../assets/profile_jw_small.png";
 import PointsWeekly from "../Containers/PointsWeekly";
 import PointsYearly from "../Containers/PointsYearly";
 import PointsChartKick from "../Containers/PointsChartKick";
-import ClubProgress from "../Containers/ClubProgress";
-import MyProgress from "../Containers/MyProgress";
+import MyProgress from "../Containers/ProgressCard";
 
 class StudentProfile extends React.Component {
   state = {

@@ -5,12 +5,8 @@ import {
   Row,
   Button,
   Image,
-  Card,
-  ListGroup,
-  Nav,
-  ProgressBar
+  Nav
 } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import "../styles/StudentProfile.css";
 import axios from "axios";
 
@@ -23,6 +19,7 @@ import MyProgress from "../Containers/ProgressCard";
 class StudentProfile extends React.Component {
   state = {
     graph: "weekly",
+    id: ``,
     id_number: ``,
     full_name: ``,
     accumulated_score: ``,
@@ -35,6 +32,7 @@ class StudentProfile extends React.Component {
   };
 
   componentDidMount() {
+    let id = localStorage.getItem("id")
     axios
       .post("http://localhost:5000/api/v1/students/users/me", {
         id_number: localStorage.getItem("id_number")
@@ -62,7 +60,7 @@ class StudentProfile extends React.Component {
       });
 
     axios
-      .get("http://localhost:5000/api/v1/calendar/clubs")
+      .get(`http://localhost:5000/api/v1/calendar/clubs/${id}`)
       .then(response => {
         let newFave = response.data.filter(favourite => {
           return favourite.fav;
@@ -77,8 +75,9 @@ class StudentProfile extends React.Component {
       });
 
     axios
-      .get("http://localhost:5000/api/v1/calendar/activities")
+      .get(`http://localhost:5000/api/v1/calendar/activities/${id}`)
       .then(response => {
+        console.log(response)
         let newActs = response.data.filter(favourite => {
           return favourite.fav;
         });
@@ -92,7 +91,7 @@ class StudentProfile extends React.Component {
   }
 
   render() {
-    const { graph, id_number, full_name, accumulated_score } = this.state;
+    const { graph, full_name, accumulated_score } = this.state;
     let display_points;
 
     if (graph === "weekly") {
@@ -107,8 +106,6 @@ class StudentProfile extends React.Component {
     } else if (graph === "yearly") {
       display_points = <PointsYearly />;
     }
-    console.log(this.state.favourites);
-    console.log(this.state.favActs);
     return (
       <>
         <Container className="Dashboard-container">
@@ -180,7 +177,6 @@ class StudentProfile extends React.Component {
                 <Col className="Dashboard-progress">
                   {" "}
                   <h3 className="Dashboard-progress-header">My Progress</h3>
-                  {/* <ClubProgress></ClubProgress> */}
                   {/* render progress for clubs */}
                   {this.state.favourites.map(favourite => (
                     <MyProgress
@@ -191,7 +187,11 @@ class StudentProfile extends React.Component {
                   ))}
                   {/* render progress for activities */}
                   {this.state.favActs.map(favAct => (
-                    <MyProgress key={favAct.id} fave={favAct} />
+                    <MyProgress
+                      key={favAct.id}
+                      fave={favAct}
+                      accumulated_score={accumulated_score}
+                    />
                   ))}
                 </Col>
               </Row>

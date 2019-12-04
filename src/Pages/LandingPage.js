@@ -1,6 +1,5 @@
 import React from "react";
 import "../App.css";
-import LoginForm from "../Containers/LoginForm";
 
 class LandingPage extends React.Component {
   render() {

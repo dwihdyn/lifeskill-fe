@@ -13,6 +13,7 @@ import "./App.css";
 import "./App.css";
 
 class App extends React.Component {
+
   handleLogout = () => {
     localStorage.removeItem("authToken");
     localStorage.removeItem("id_number");

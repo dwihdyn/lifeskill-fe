@@ -60,7 +60,7 @@ class SignupForm extends React.Component {
         if (res.data.success) {
           // create token for persistent login
           localStorage.setItem("authToken", res.data.auth_token);
-          if (this.state.user_group == "Student") {
+          if (this.state.user_group === "Student") {
             alert("Student successfuly enrolled!");
           } else {
             alert("Teacher successfully enrolled!")

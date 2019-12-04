@@ -1,18 +1,14 @@
 import React from "react";
 import "../styles/ProgressCard.css";
 
-import { ProgressBar, Image, Button, Row, Col } from "react-bootstrap";
+import { ProgressBar, Button } from "react-bootstrap";
 
 class MyProgress extends React.Component {
-  // state = {
-  //   now: 60,
-  //   total: 100
-  // };
 
   render = props => {
     console.log(this.props.fave);
 
-    const { name, image, points } = this.props.fave;
+    const { name, points } = this.props.fave;
 
     return (
       <>

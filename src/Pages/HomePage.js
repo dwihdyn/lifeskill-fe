@@ -36,11 +36,12 @@ class HomePage extends React.Component {
   }
 
   componentDidMount() {
+    let id = localStorage.getItem("id")
     this.setState({
       student_id: localStorage.getItem("id")
     })
     axios
-      .get("http://localhost:5000/api/v1/calendar/clubs")
+      .get(`http://localhost:5000/api/v1/calendar/clubs/${id}`)
       .then(response => {
         this.setState({
           clubs: response.data,
@@ -53,20 +54,7 @@ class HomePage extends React.Component {
       });
       
     axios
-      .get("http://localhost:5000/api/v1/calendar/activities")
-      .then(response => {
-        // console.log(response);
-        this.setState({
-          activities: response.data,
-          isLoadingAct: false
-        });
-        console.log(response.data);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-      axios
-      .get("http://localhost:5000/api/v1/calendar/activities")
+      .get(`http://localhost:5000/api/v1/calendar/activities/${id}`)
       .then(response => {
         // console.log(response);
         this.setState({

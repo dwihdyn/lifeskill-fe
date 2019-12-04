@@ -1,0 +1,16 @@
+.Givepoints{
+    width: 110vw;
+    height: 110vh;
+}
+
+.Header-wrapper {
+    margin: 60px 0 30px 0;
+    background-color: whitesmoke;
+    border-radius: 10px;
+
+}
+
+.Givepoints-header {
+    margin: 15px;
+
+}

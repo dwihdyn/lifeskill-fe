@@ -14,15 +14,15 @@ const NavBar = props => {
               <Nav.Link href="/homepage">School Calendar</Nav.Link>
               <Nav.Link href="#">Upload</Nav.Link>
               <Nav.Link href="/profile">My Dashboard</Nav.Link>
-              <Nav.Link href="#">Give Points</Nav.Link>
+              <Nav.Link href="/give">Give Points</Nav.Link>
               <Nav.Link onClick={props.handleLogout}>Sign Out</Nav.Link>
             </>
           ) : (
-            <>
-              <Nav.Link href="/login">Log In</Nav.Link>
-              <Nav.Link href="/signup">Sign Up</Nav.Link>
-            </>
-          )}
+              <>
+                <Nav.Link href="/login">Log In</Nav.Link>
+                <Nav.Link href="/signup">Sign Up</Nav.Link>
+              </>
+            )}
         </Nav>
       </Navbar>
     </>

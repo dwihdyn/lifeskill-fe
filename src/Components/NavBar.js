@@ -21,11 +21,11 @@ const NavBar = props => {
               <Nav.Link onClick={props.handleLogout}>Sign Out</Nav.Link>
             </>
           ) : (
-            <>
-              <Nav.Link href="/login">Log In</Nav.Link>
-              <Nav.Link href="/signup">Sign Up</Nav.Link>
-            </>
-          )}
+              <>
+                <Nav.Link href="/login">Log In</Nav.Link>
+                <Nav.Link href="/signup">Sign Up</Nav.Link>
+              </>
+            )}
         </Nav>
       </Navbar>
     </>

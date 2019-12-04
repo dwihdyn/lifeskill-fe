@@ -75,6 +75,13 @@ class App extends React.Component {
               return <GivePoints />;
             }}
           />
+          <Route
+            exact
+            path="/give"
+            component={() => {
+              return <GivePoints />;
+            }}
+          />
         </Switch>
       </>
     );

@@ -21,7 +21,6 @@ class HomePage extends React.Component {
         category_id: category_id
       })
       .then(response => {
-
         let copy = [...this.state[category]]
         copy[index].fav = !copy[index].fav
 
@@ -70,6 +69,7 @@ class HomePage extends React.Component {
 
   render() {
     let { clubs, activities, full_name } = this.state;
+    let isStudent = localStorage.getItem("isStudent")
     const fullHeart = "\u2665";
     const hollowHeart = "\u2661";
     let clubsMatrix = [];
@@ -140,15 +140,18 @@ class HomePage extends React.Component {
                 }
               >
                 {clubsMatrix.map((clubArr, index) => (
-                  <CarouselItem>
+                  <CarouselItem key={`C${index}`}>
                     <Row>
                       {clubArr.map((club, index) => (
-                        <Col>
+                        <Col key={`club${club.id}`}>
                           <Card>
                             <Card.Img variant="top" src={club.image} />
                             <Card.Body>
                               <Card.Title>{club.name}</Card.Title>
                               <Card.Text>{club.description}</Card.Text>
+                              <hr></hr>
+                              <Card.Text>{`Points to qualify: ${club.points}`}</Card.Text>
+                              {isStudent=="true" ? (
                               <Button
                                 variant={club.fav ? "danger" : "secondary"}
                                 onClick={() =>
@@ -159,10 +162,10 @@ class HomePage extends React.Component {
                                     index
                                   )
                                 }
-                                key={club.name}
-                              >
+                                key={club.name}>
                                 {club.fav ? fullHeart : hollowHeart}
-                              </Button>
+                              </Button>) 
+                              : null}
                             </Card.Body>
                           </Card>
                         </Col>
@@ -181,18 +184,22 @@ class HomePage extends React.Component {
                 prevIcon={<h2 aria-hidden="true" style={{ color: 'black', fontWeight: "bolder", display: 'inline' }}>&lt;</h2>}
                 nextIcon={<h2 aria-hidden="true" style={{ color: 'black', fontWeight: "bolder", display: 'inline' }}>&gt;</h2>}>
                 {activitiesMatrix.map((actArr, index) =>
-                  <CarouselItem>
+                  <CarouselItem key={`A${index}`}>
                     <Row>
                       {actArr.map((activity, index) =>
-                        <Col>
+                        <Col key={`act${activity.id}`}>
                           <Card>
                             <Card.Img variant="top" src={activity.image} />
                             <Card.Body>
                               <Card.Title>{activity.name}</Card.Title>
                               <Card.Text>{activity.description}</Card.Text>
+                              <hr></hr>
+                              <Card.Text>{`Points to qualify: ${activity.points}`}</Card.Text>
+                              {isStudent=="true" ? (
                               <Button variant={activity.fav ? "danger" : "secondary"}
                                 onClick={() => this.handleClick(activity.id, this.state.student_id, "activities", index)}
-                                key={activity.name}>{activity.fav ? fullHeart : hollowHeart}</Button>
+                                key={activity.name}>{activity.fav ? fullHeart : hollowHeart}</Button>)
+                                : null}
                             </Card.Body>
                           </Card>
                         </Col>

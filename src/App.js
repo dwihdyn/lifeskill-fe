@@ -12,7 +12,6 @@ import GivePoints from "./Containers/GivePoints";
 
 import "./App.css";
 
-import "./App.css";
 
 class App extends React.Component {
 
@@ -75,13 +74,7 @@ class App extends React.Component {
               return <GivePoints />;
             }}
           />
-          <Route
-            exact
-            path="/give"
-            component={() => {
-              return <GivePoints />;
-            }}
-          />
+
         </Switch>
       </>
     );

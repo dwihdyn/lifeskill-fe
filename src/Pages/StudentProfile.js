@@ -188,6 +188,8 @@ class StudentProfile extends React.Component {
                   {" "}
                   <h3 className="Dashboard-progress-header">My Progress</h3>
                   {/* render progress for clubs */}
+                  <hr style={{'border-top': '2px solid rgba(0,0,0,.1)'}}></hr>
+                  <h4 style={{color: '#362ca9'}}>Clubs</h4>
                   {this.state.favourites.map(favourite => (
                     <MyProgress
                       key={favourite.id}
@@ -196,6 +198,8 @@ class StudentProfile extends React.Component {
                     />
                   ))}
                   {/* render progress for activities */}
+                  <hr style={{'border-top': '2px solid rgba(0,0,0,.1)'}}></hr>
+                  <h4 style={{color: '#362ca9'}}>Activities</h4>
                   {this.state.favActs.map(favAct => (
                     <MyProgress
                       key={favAct.id}

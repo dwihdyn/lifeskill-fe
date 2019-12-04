@@ -10,7 +10,7 @@ class HomePage extends React.Component {
     activities: [],
     isLoadingClub: true,
     isLoadingAct: true,
-    student_id: null,
+    student_id: localStorage.getItem("id"),
     fullname: ""
   };
 
@@ -28,7 +28,7 @@ class HomePage extends React.Component {
         this.setState({
           [category]: [...copy]
         });
-       
+
       })
       .catch(error => {
         console.log(error);
@@ -52,7 +52,7 @@ class HomePage extends React.Component {
       .catch(error => {
         console.log(error);
       });
-      
+
     axios
       .get(`http://localhost:5000/api/v1/calendar/activities/${id}`)
       .then(response => {
@@ -178,29 +178,29 @@ class HomePage extends React.Component {
             <h3 className="Activities-header">Activities</h3>
             <Col>
               <Carousel indicators={false}
-            prevIcon={<h2 aria-hidden="true" style={{color: 'black', fontWeight: "bolder", display: 'inline'}}>&lt;</h2>} 
-            nextIcon={<h2 aria-hidden="true" style={{color: 'black', fontWeight: "bolder", display: 'inline'}}>&gt;</h2>}>
-            {activitiesMatrix.map((actArr, index) => 
-                <CarouselItem>
-                  <Row>
-                    {actArr.map((activity, index) => 
-                      <Col>
-                        <Card>
-                          <Card.Img variant="top" src={activity.image} />
-                          <Card.Body>
-                          <Card.Title>{activity.name}</Card.Title>
-                          <Card.Text>{activity.description}</Card.Text>
-                            <Button variant={activity.fav?"danger":"secondary"} 
-                            onClick={() => this.handleClick(activity.id, this.state.student_id, "activities", index)} 
-                            key={activity.name}>{activity.fav?fullHeart:hollowHeart}</Button>
-                          </Card.Body>
-                        </Card>
-                      </Col>
-                    )}
-                  </Row>
-                </CarouselItem>
-              )}
-            </Carousel>
+                prevIcon={<h2 aria-hidden="true" style={{ color: 'black', fontWeight: "bolder", display: 'inline' }}>&lt;</h2>}
+                nextIcon={<h2 aria-hidden="true" style={{ color: 'black', fontWeight: "bolder", display: 'inline' }}>&gt;</h2>}>
+                {activitiesMatrix.map((actArr, index) =>
+                  <CarouselItem>
+                    <Row>
+                      {actArr.map((activity, index) =>
+                        <Col>
+                          <Card>
+                            <Card.Img variant="top" src={activity.image} />
+                            <Card.Body>
+                              <Card.Title>{activity.name}</Card.Title>
+                              <Card.Text>{activity.description}</Card.Text>
+                              <Button variant={activity.fav ? "danger" : "secondary"}
+                                onClick={() => this.handleClick(activity.id, this.state.student_id, "activities", index)}
+                                key={activity.name}>{activity.fav ? fullHeart : hollowHeart}</Button>
+                            </Card.Body>
+                          </Card>
+                        </Col>
+                      )}
+                    </Row>
+                  </CarouselItem>
+                )}
+              </Carousel>
             </Col>
           </Row>
         </Container>

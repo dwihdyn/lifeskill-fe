@@ -54,7 +54,7 @@
 
 .Wrapper-header {
   padding: 20px 0 0 10px;
-  display: flex;
+  /* display: flex; */
   flex-direction: row;
   justify-content: space-between;
 }
@@ -68,7 +68,7 @@
 }
 
 .Dashboard-progress-header {
-    padding: 20px 0 0 10px;
+  padding: 20px 0 0 10px;
 }
 
 .Progress {

@@ -33,15 +33,11 @@ class LoginForm extends React.Component {
       .then(res => {
         console.log(res);
         if (res.data.success) {
-          // create token for persistent login
           localStorage.setItem("authToken", res.data.authToken);
-
-          // save logged in user credential in local
           localStorage.setItem("id_number", res.data.id_number);
           localStorage.setItem("id", res.data.id);
-          alert("logged in successfully. welcome back " + res.data.full_name)
-
-          
+          localStorage.setItem("isStudent", JSON.stringify(res.data.isStudent));
+          alert("logged in successfully. welcome back " + res.data.full_name);
           return (window.location = "/homepage");
         } else {
           alert("User does not exist, check the id or password");
@@ -69,7 +65,7 @@ class LoginForm extends React.Component {
               <Input
                 type="text"
                 id="id_number"
-                placeholder="11 to see inside"
+                placeholder="Student ID"
                 value={id_number}
                 onChange={this.handleIdNumber}
               />
@@ -80,7 +76,7 @@ class LoginForm extends React.Component {
                 type="password"
                 name="password"
                 id="password"
-                placeholder="111"
+                placeholder="Don't tell anyone....."
                 value={password}
                 onChange={this.handlePassword}
               />

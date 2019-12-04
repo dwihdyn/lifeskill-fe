@@ -7,6 +7,8 @@ import LandingPage from "./Pages/LandingPage";
 import NavBar from "./Components/NavBar";
 import LoginForm from "./Containers/LoginForm";
 import SignupForm from "./Containers/SignupForm";
+import TeacherProfile from "./Pages/TeacherProfile";
+import GivePoints from "./Containers/GivePoints";
 
 import "./App.css";
 
@@ -18,6 +20,7 @@ class App extends React.Component {
     localStorage.removeItem("authToken");
     localStorage.removeItem("id_number");
     localStorage.removeItem("id");
+    localStorage.removeItem("isStudent");
     return (window.location = "/");
   };
 
@@ -58,7 +61,18 @@ class App extends React.Component {
             exact
             path="/profile"
             component={() => {
-              return <StudentProfile />;
+              if (JSON.parse(localStorage.getItem("isStudent"))) {
+                return <StudentProfile />;
+              } else {
+                return <TeacherProfile />;
+              }
+            }}
+          />
+          <Route
+            exact
+            path="/givepoints"
+            component={() => {
+              return <GivePoints />;
             }}
           />
         </Switch>

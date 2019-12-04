@@ -9,6 +9,13 @@
   padding-bottom: 0.85em;
 }
 
+.title {
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  color: white;
+}
+
 .header {
   background-color: rgb(16, 140, 161);
   padding: 5px 10px;
@@ -19,7 +26,11 @@
   border-bottom: solid 2px #444;
 }
 
-.students {
+.top-part {
+  display: flex;
+  color: white;
+}
+x` .students {
   display: flex;
   flex-wrap: wrap;
 }
@@ -32,18 +43,12 @@
   width: 100%;
 }
 
-.student-score {
+.student-name {
+  margin-right: 10px;
+  color: white;
 }
 
-.give-points {
-  border: none;
-  font-weight: bold;
-  color: #fafafa;
-  display: block;
-  padding: 20px 20px;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+.student-score {
+  display: flex;
+  color: white;
 }

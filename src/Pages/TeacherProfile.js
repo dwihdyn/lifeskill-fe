@@ -1,16 +1,24 @@
 import React from "react";
-import { Container, Col, Row, Button, Image, Nav } from "react-bootstrap";
+import {
+  Container,
+  Col,
+  Row,
+  Button,
+  Image,
+  Card,
+  ListGroup,
+  Nav,
+  ProgressBar
+} from "react-bootstrap";
 import "../styles/StudentProfile.css";
 import axios from "axios";
 
-import profileImg from "../assets/profile_jw_small.png";
-import PointsWeekly from "../Containers/PointsWeekly";
-import ScoreboardStd from "../Containers/ScoreboardStd";
-import MyProgress from "../Containers/ProgressCard";
+import profileImg from "../assets/images/dumbledore.jpeg";
+import ScoreboardTch from "../Containers/ScoreboardTch";
 
-class StudentProfile extends React.Component {
+class TeacherProfile extends React.Component {
   state = {
-    graph: "Own",
+    graph: "weekly",
     id_number: ``,
     full_name: ``,
     accumulated_score: ``,
@@ -19,12 +27,7 @@ class StudentProfile extends React.Component {
     ranking: []
   };
 
-  toggleView = e => {
-    this.setState({ graph: e.target.name });
-  };
-
   componentDidMount() {
-    let id = localStorage.getItem("id")
     axios
       .post("http://localhost:5000/api/v1/students/users/me", {
         id_number: localStorage.getItem("id_number")
@@ -52,7 +55,7 @@ class StudentProfile extends React.Component {
       });
 
     axios
-      .get(`http://localhost:5000/api/v1/calendar/clubs/${id}`)
+      .get("http://localhost:5000/api/v1/calendar/clubs")
       .then(response => {
         let newFave = response.data.filter(favourite => {
           return favourite.fav;
@@ -67,9 +70,8 @@ class StudentProfile extends React.Component {
       });
 
     axios
-      .get(`http://localhost:5000/api/v1/calendar/activities/${id}`)
+      .get("http://localhost:5000/api/v1/calendar/activities")
       .then(response => {
-        console.log(response)
         let newActs = response.data.filter(favourite => {
           return favourite.fav;
         });
@@ -82,7 +84,7 @@ class StudentProfile extends React.Component {
       });
 
     axios
-      .get("http://localhost:5000/api/v1/students/scoreboard")
+      .get("http://localhost:5000/api/v1/students/scoreboard/all")
       .then(res => {
         console.log(res.data.ranking);
         this.setState({
@@ -95,27 +97,13 @@ class StudentProfile extends React.Component {
   }
 
   render() {
-    const {
-      graph,
-      id_number,
-      full_name,
-      accumulated_score,
-      ranking
-    } = this.state;
+    const { graph, id_number, full_name, accumulated_score } = this.state;
     let display_points;
 
-    if (graph === "Own") {
-      display_points = (
-        <PointsWeekly
-          creativity_score={this.state.creativity_score}
-          leadership_score={this.state.leadership_score}
-          respect_score={this.state.respect_score}
-          accumulated_score={this.state.accumulated_score}
-        />
-      );
-    } else if (graph === "yearly") {
-      display_points = <ScoreboardStd ranking={this.state.ranking} />;
-    }
+    display_points = <ScoreboardTch ranking={this.state.ranking} />;
+
+    console.log(this.state.favourites);
+    console.log(this.state.favActs);
     return (
       <>
         <Container className="Dashboard-container">
@@ -131,13 +119,13 @@ class StudentProfile extends React.Component {
                 <p>
                   <strong>{full_name}</strong>
                 </p>
-                <p>Year 9</p>
+                <p>Head Master</p>
               </div>
               {/* Nav to display Points or Progress component */}
               <Nav defaultActiveKey="/home" className="flex-column">
                 <Nav.Link className="Sidebar-link">
-                  “Ask not what your country can do for you – ask what you can
-                  do for your country”
+                  “Why do i wear sunglasses ? because my students future are so
+                  bright ha ha ha”
                 </Nav.Link>
               </Nav>
             </Col>
@@ -145,9 +133,6 @@ class StudentProfile extends React.Component {
               <div className="Dashboard-charts-header">
                 <p className="Dashboard-charts-header-li">
                   <strong>Hello, {full_name}. Welcome to your dashboard</strong>
-                </p>
-                <p className="Dashboard-charts-header-li">
-                  <strong>Total Points: {accumulated_score}</strong>
                 </p>
               </div>
 
@@ -157,52 +142,16 @@ class StudentProfile extends React.Component {
                   <div className="Wrapper">
                     <div className="Wrapper-header">
                       {" "}
-                      <h3 className="Dashboard-points-header">My Points</h3>
-                    </div>
-
-                    {/* Nav to toggle between Own and yearly */}
-                    <div className="Wrapper-btn">
-                      <Button
-                        className="Dashboard-points-button"
-                        variant="warning"
-                        name="Own"
-                        onClick={e => this.toggleView(e)}
-                      >
-                        Own
-                      </Button>
-                      <Button
-                        className="Dashboard-points-button"
-                        variant="warning"
-                        name="yearly"
-                        onClick={e => this.toggleView(e)}
-                      >
-                        Top5
-                      </Button>
+                      <h3 className="Dashboard-points-header w-100">
+                        Student Dashboard
+                      </h3>
+                      <p className="Dashboard-points-header w-100">
+                        Reach out to the student when their Dropout rate higher
+                        than 50%
+                      </p>
                     </div>
                   </div>
                   {display_points}
-                </Col>
-              </Row>
-              <Row>
-                <Col className="Dashboard-progress">
-                  {" "}
-                  <h3 className="Dashboard-progress-header">My Progress</h3>
-                  {/* render progress for clubs */}
-                  {this.state.favourites.map(favourite => (
-                    <MyProgress
-                      key={favourite.id}
-                      fave={favourite}
-                      accumulated_score={accumulated_score}
-                    />
-                  ))}
-                  {/* render progress for activities */}
-                  {this.state.favActs.map(favAct => (
-                    <MyProgress
-                      key={favAct.id}
-                      fave={favAct}
-                      accumulated_score={accumulated_score}
-                    />
-                  ))}
                 </Col>
               </Row>
             </Col>
@@ -213,4 +162,4 @@ class StudentProfile extends React.Component {
   }
 }
 
-export default StudentProfile;
+export default TeacherProfile;

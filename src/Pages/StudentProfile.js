@@ -24,6 +24,7 @@ class StudentProfile extends React.Component {
   };
 
   componentDidMount() {
+    let id = localStorage.getItem("id")
     axios
       .post("http://localhost:5000/api/v1/students/users/me", {
         id_number: localStorage.getItem("id_number")
@@ -51,7 +52,7 @@ class StudentProfile extends React.Component {
       });
 
     axios
-      .get("http://localhost:5000/api/v1/calendar/clubs")
+      .get(`http://localhost:5000/api/v1/calendar/clubs/${id}`)
       .then(response => {
         let newFave = response.data.filter(favourite => {
           return favourite.fav;
@@ -66,8 +67,9 @@ class StudentProfile extends React.Component {
       });
 
     axios
-      .get("http://localhost:5000/api/v1/calendar/activities")
+      .get(`http://localhost:5000/api/v1/calendar/activities/${id}`)
       .then(response => {
+        console.log(response)
         let newActs = response.data.filter(favourite => {
           return favourite.fav;
         });
@@ -114,8 +116,6 @@ class StudentProfile extends React.Component {
     } else if (graph === "yearly") {
       display_points = <ScoreboardStd ranking={this.state.ranking} />;
     }
-    console.log(this.state.favourites);
-    console.log(this.state.favActs);
     return (
       <>
         <Container className="Dashboard-container">
@@ -187,8 +187,9 @@ class StudentProfile extends React.Component {
                 <Col className="Dashboard-progress">
                   {" "}
                   <h3 className="Dashboard-progress-header">My Progress</h3>
-                  {/* <ClubProgress></ClubProgress> */}
                   {/* render progress for clubs */}
+                  <hr style={{'border-top': '2px solid rgba(0,0,0,.1)'}}></hr>
+                  <h4 style={{color: '#362ca9'}}>Clubs</h4>
                   {this.state.favourites.map(favourite => (
                     <MyProgress
                       key={favourite.id}
@@ -197,8 +198,14 @@ class StudentProfile extends React.Component {
                     />
                   ))}
                   {/* render progress for activities */}
+                  <hr style={{'border-top': '2px solid rgba(0,0,0,.1)'}}></hr>
+                  <h4 style={{color: '#362ca9'}}>Activities</h4>
                   {this.state.favActs.map(favAct => (
-                    <MyProgress key={favAct.id} fave={favAct} />
+                    <MyProgress
+                      key={favAct.id}
+                      fave={favAct}
+                      accumulated_score={accumulated_score}
+                    />
                   ))}
                 </Col>
               </Row>
